@@ -244,7 +244,7 @@ namespace InputTracker {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/InputTracker;component/windowdatabase.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/InputTracker;V1.0.0.0;component/windowdatabase.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\WindowDatabase.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

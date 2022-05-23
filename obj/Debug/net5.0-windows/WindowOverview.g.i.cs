@@ -292,7 +292,7 @@ namespace InputTracker {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/InputTracker;component/windowoverview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/InputTracker;V1.0.0.0;component/windowoverview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\WindowOverview.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

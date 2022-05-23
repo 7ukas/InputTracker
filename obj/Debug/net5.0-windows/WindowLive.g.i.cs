@@ -196,7 +196,7 @@ namespace InputTracker {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/InputTracker;component/windowlive.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/InputTracker;V1.0.0.0;component/windowlive.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\WindowLive.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
