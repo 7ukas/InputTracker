@@ -1,0 +1,151 @@
+﻿<UserControl x:Class="InputTracker.WindowLive"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Loaded="_Window_Loaded">
+
+    <UserControl.Resources>
+        <FontFamily x:Key="OpenSans">/Fonts/#OpenSans-Regular</FontFamily>
+        
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily" Value="{StaticResource OpenSans}" />
+        </Style>
+
+        <Style x:Key="Hover">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Opacity" To="0.75" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Opacity" To="1.0" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="OnMouseButtonClicked">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Mouse.MouseDown">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="1x">
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Source" Duration="0:0:0.200">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <BitmapImage UriSource="pack://application:,,,/InputTracker;component/resources/images/mouse_active.png"/>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.100">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <BitmapImage UriSource="pack://application:,,,/InputTracker;component/resources/images/mouse.png"/>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+
+
+
+        <Style x:Key="OnKeyPressed">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Mouse.MouseDown">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="1x">
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Source" Duration="0:0:0.200">
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <BitmapImage UriSource="pack://application:,,,/InputTracker;component/resources/images/keyboard_active.png"/>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.100">
+                                    <DiscreteObjectKeyFrame.Value>
+                                        <BitmapImage UriSource="pack://application:,,,/InputTracker;component/resources/images/keyboard.png"/>
+                                    </DiscreteObjectKeyFrame.Value>
+                                </DiscreteObjectKeyFrame>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="35"/>
+            <ColumnDefinition Width="225"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Column="0" Grid.Row="1" Width="35" Source="{StaticResource Calendar}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBlock x:Name="textBlock_Date" Text="-"  FontWeight="DemiBold" Grid.Column="1" Grid.Row="1" Margin="8,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="3" Grid.Row="1" Margin="0,0,78,0" Text="Tracking" FontWeight="DemiBold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <ToggleButton x:Name="toggleButton_Tracking" Grid.Column="3" Grid.Row="1" Height="20" Width="68" HorizontalAlignment="Right" Style="{StaticResource Hover}" Checked="_OnTrackingChecked" Unchecked="_OnTrackingUnchecked">
+            <ToggleButton.Template>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border x:Name="B1" Background="#E74C3C" CornerRadius="10" Padding="2">
+                        <Border x:Name="B2" Background="White" Width="17" CornerRadius="10" HorizontalAlignment="Left">
+                            <ContentPresenter/>
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="B2" Property="HorizontalAlignment" Value="Right"/>
+                            <Setter TargetName="B1" Property="Background" Value="#2ECC71"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </ToggleButton.Template>
+        </ToggleButton>
+
+
+        <Image Grid.Column="0" Grid.Row="2" Source="{StaticResource Clock}" Width="34" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBlock x:Name="textBlock_Time" Text="-" FontWeight="DemiBold" Grid.Column="1" Grid.Row="2" Margin="8,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="3" Grid.Row="2" Margin="0,0,97,0" Text="Style" FontWeight="DemiBold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <ComboBox Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" Width="87" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <ComboBoxItem x:Name="comboBoxItem_Regular" Content="Regular" IsSelected="True" Selected="_OnStyleChanged"></ComboBoxItem>
+            <ComboBoxItem x:Name="comboBoxItem_Raw" Content="Raw" Selected="_OnStyleChanged"></ComboBoxItem>
+        </ComboBox>
+
+        <Image Grid.Column="0" Grid.Row="4" Margin="0,0,0,5" Width="35" Source="{StaticResource Application}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBlock x:Name="textBlock_Application" FontWeight="DemiBold" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Margin="8,0,0,5" Text="Application" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Image x:Name="image_Mouse" Grid.Column="3" Grid.Row="4" Margin="0,0,35,0" Width="27" Source="{StaticResource Mouse}" Style="{StaticResource OnMouseButtonClicked}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Image x:Name="image_Keyboard" Grid.Column="3" Grid.Row="4" Margin="0,0,0,0" Width="30" Source="{StaticResource Keyboard}" Style="{StaticResource OnKeyPressed}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+        <TextBox x:Name="textBox_Live" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" Margin="0,0,0,10" Height="20" VerticalAlignment="Center" IsReadOnly="True" HorizontalAlignment="Stretch"/>
+        <TextBox x:Name="textBox_Log" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="4" TextWrapping="Wrap" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                 ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch" IsReadOnly="True"/>
+
+        <Image x:Name="image_EntriesCount" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="7" Margin="0,5,0,5" Width="20" Source="{StaticResource Database}" HorizontalAlignment="Left"/>
+        <TextBlock Name="textBlock_Entries" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="7" Text="0" Margin="26,9,0,0" HorizontalAlignment="Left"/>
+        <Image x:Name="image_KeyboardCount" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="7" Margin="80,5,0,5" Width="20" Source="{StaticResource Keyboard}" HorizontalAlignment="Left"/>
+        <TextBlock Name="textBlock_KeyStrokes" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="7" Text="0" Margin="107,9,0,0" HorizontalAlignment="Left"/>
+        <Image x:Name="image_MouseCount" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="7" Margin="160,5,0,5" Width="20" Source="{StaticResource Mouse}" HorizontalAlignment="Left"/>
+        <TextBlock Name="textBlock_MouseClicks" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="7" Text="0" Margin="185,9,0,0" HorizontalAlignment="Left"/>
+        <Image x:Name="image_TrashCan" Grid.Column="3" Grid.Row="7" Margin="0,5,32,0" Height="30" Source="{StaticResource TrashCan}" Style="{StaticResource Hover}" HorizontalAlignment="Right" VerticalAlignment="Center" MouseDown="_OnTrashCanPressed" MouseUp="_OnTrashCanUnpressed"/>
+        <Image x:Name="image_Arrow" Grid.Column="3" Grid.Row="7" Margin="0,5,0,0" Height="30" Source="{StaticResource Arrow}" Style="{StaticResource Hover}" HorizontalAlignment="Right" VerticalAlignment="Center" MouseDown="_OnArrowPressed" MouseUp="_OnArrowUnpressed"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,1321 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0-windows7.0": {
+      "Dapper/2.0.123": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Dapper.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Dapper.dll": {}
+        }
+      },
+      "Dragablz/0.0.3.223": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/Dragablz.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Dragablz.dll": {}
+        }
+      },
+      "MaterialDesignColors/2.0.5": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/MaterialDesignColors.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/MaterialDesignColors.dll": {}
+        }
+      },
+      "Microsoft.Win32.Registry/4.7.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.AccessControl": "4.7.0",
+          "System.Security.Principal.Windows": "4.7.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.Registry.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard2.0/Microsoft.Win32.Registry.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "Microsoft.Win32.SystemEvents/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "ModernUI.WPF/1.0.9": {
+        "type": "package",
+        "compile": {
+          "lib/net45/FirstFloor.ModernUI.dll": {}
+        },
+        "runtime": {
+          "lib/net45/FirstFloor.ModernUI.dll": {}
+        }
+      },
+      "runtime.native.System.Data.SqlClient.sni/4.7.0": {
+        "type": "package",
+        "dependencies": {
+          "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni": "4.4.0",
+          "runtime.win-x64.runtime.native.System.Data.SqlClient.sni": "4.4.0",
+          "runtime.win-x86.runtime.native.System.Data.SqlClient.sni": "4.4.0"
+        }
+      },
+      "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/sni.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          }
+        }
+      },
+      "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/win-x64/native/sni.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          }
+        }
+      },
+      "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/win-x86/native/sni.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "Stub.System.Data.SQLite.Core.NetStandard/1.0.115.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/System.Data.SQLite.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/System.Data.SQLite.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-x64/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-x64/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "System.Configuration.ConfigurationManager/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.Cryptography.ProtectedData": "6.0.0",
+          "System.Security.Permissions": "6.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Data.SqlClient/4.8.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.Registry": "4.7.0",
+          "System.Security.Principal.Windows": "4.7.0",
+          "runtime.native.System.Data.SqlClient.sni": "4.7.0"
+        },
+        "compile": {
+          "ref/netcoreapp2.1/System.Data.SqlClient.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/System.Data.SqlClient.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.Data.SQLite.Core/1.0.115.5": {
+        "type": "package",
+        "dependencies": {
+          "Stub.System.Data.SQLite.Core.NetStandard": "[1.0.115.5]"
+        }
+      },
+      "System.Drawing.Common/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "6.0.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/System.Drawing.Common.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/System.Drawing.Common.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp3.1/System.Drawing.Common.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netcoreapp3.1/System.Drawing.Common.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.Memory/4.5.4": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/_._": {}
+        }
+      },
+      "System.Security.AccessControl/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.Principal.Windows": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Security.AccessControl.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.AccessControl.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netstandard2.0/System.Security.AccessControl.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.Security.Cryptography.ProtectedData/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.Security.Permissions/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.AccessControl": "6.0.0",
+          "System.Windows.Extensions": "6.0.0"
+        },
+        "compile": {
+          "lib/net5.0/System.Security.Permissions.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/System.Security.Permissions.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Security.Principal.Windows/5.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp3.0/System.Security.Principal.Windows.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Principal.Windows.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netcoreapp2.1/System.Security.Principal.Windows.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.Windows.Extensions/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/System.Windows.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/System.Windows.Extensions.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp3.1/System.Windows.Extensions.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Dapper/2.0.123": {
+      "sha512": "RDFF4rBLLmbpi6pwkY7q/M6UXHRJEOerplDGE5jwEkP/JGJnBauAClYavNKJPW1yOTWRPIyfj4is3EaJxQXILQ==",
+      "type": "package",
+      "path": "dapper/2.0.123",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Dapper.png",
+        "dapper.2.0.123.nupkg.sha512",
+        "dapper.nuspec",
+        "lib/net461/Dapper.dll",
+        "lib/net461/Dapper.xml",
+        "lib/net5.0/Dapper.dll",
+        "lib/net5.0/Dapper.xml",
+        "lib/netstandard2.0/Dapper.dll",
+        "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
+    "Dragablz/0.0.3.223": {
+      "sha512": "nSDrLkQniVmvCvg4JlbtMYBD3UtHbJkX64vJ701TZT+IfOqfEA7cQU5da5NqACY9GuwK7R6VbtPp4WGZK1uTaQ==",
+      "type": "package",
+      "path": "dragablz/0.0.3.223",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dragablz.0.0.3.223.nupkg.sha512",
+        "dragablz.nuspec",
+        "lib/net40/Dragablz.dll",
+        "lib/net40/Dragablz.pdb",
+        "lib/net40/Dragablz.xml",
+        "lib/net45/Dragablz.dll",
+        "lib/net45/Dragablz.pdb",
+        "lib/net45/Dragablz.xml",
+        "lib/netcoreapp3.0/Dragablz.dll",
+        "lib/netcoreapp3.0/Dragablz.pdb",
+        "lib/netcoreapp3.0/Dragablz.xml",
+        "src/net40/CanvasOrganiser.cs",
+        "src/net40/ContainerCustomisations.cs",
+        "src/net40/Converters/BooleanAndToVisibilityConverter.cs",
+        "src/net40/Converters/EqualityToBooleanConverter.cs",
+        "src/net40/Converters/EqualityToVisibilityConverter.cs",
+        "src/net40/Converters/ShowDefaultCloseButtonConverter.cs",
+        "src/net40/Core/CollectionTeaser.cs",
+        "src/net40/Core/Extensions.cs",
+        "src/net40/Core/FuncComparer.cs",
+        "src/net40/Core/HitTest.cs",
+        "src/net40/Core/InterTabTransfer.cs",
+        "src/net40/Core/MultiComparer.cs",
+        "src/net40/Core/Native.cs",
+        "src/net40/Core/SystemCommand.cs",
+        "src/net40/Core/TabHeaderDragStartInformation.cs",
+        "src/net40/Core/WindowMessage.cs",
+        "src/net40/DefaultInterLayoutClient.cs",
+        "src/net40/DefaultInterTabClient.cs",
+        "src/net40/Dockablz/Branch.cs",
+        "src/net40/Dockablz/BranchAccessor.cs",
+        "src/net40/Dockablz/BranchItem.cs",
+        "src/net40/Dockablz/BranchResult.cs",
+        "src/net40/Dockablz/CouldBeHeaderedStyleSelector.cs",
+        "src/net40/Dockablz/DropZone.cs",
+        "src/net40/Dockablz/DropZoneLocation.cs",
+        "src/net40/Dockablz/Extensions.cs",
+        "src/net40/Dockablz/Finder.cs",
+        "src/net40/Dockablz/FloatRequestedEvent.cs",
+        "src/net40/Dockablz/FloatTransfer.cs",
+        "src/net40/Dockablz/FloatingItemSnapShot.cs",
+        "src/net40/Dockablz/Layout.cs",
+        "src/net40/Dockablz/LayoutAccessor.cs",
+        "src/net40/Dockablz/LocationReport.cs",
+        "src/net40/Dockablz/LocationReportBuilder.cs",
+        "src/net40/Dockablz/LocationReportException.cs",
+        "src/net40/Dockablz/LocationSnapShot.cs",
+        "src/net40/Dockablz/Tiler.cs",
+        "src/net40/Dockablz/TilerCalculator.cs",
+        "src/net40/DragablzColors.cs",
+        "src/net40/DragablzDragCompletedEventArgs.cs",
+        "src/net40/DragablzDragDeltaEventArgs.cs",
+        "src/net40/DragablzDragStartedEventArgs.cs",
+        "src/net40/DragablzIcon.cs",
+        "src/net40/DragablzItem.cs",
+        "src/net40/DragablzItemEventArgs.cs",
+        "src/net40/DragablzItemsControl.cs",
+        "src/net40/DragablzWindow.cs",
+        "src/net40/EmptyHeaderSizingHint.cs",
+        "src/net40/HeaderedDragablzItem.cs",
+        "src/net40/HeaderedItemViewModel.cs",
+        "src/net40/HorizontalOrganiser.cs",
+        "src/net40/HorizontalPositionMonitor.cs",
+        "src/net40/IInterLayoutClient.cs",
+        "src/net40/IInterTabClient.cs",
+        "src/net40/IItemsOrganiser.cs",
+        "src/net40/IManualInterTabClient.cs",
+        "src/net40/INewTabHost.cs",
+        "src/net40/InterTabController.cs",
+        "src/net40/ItemActionCallbackArgs.cs",
+        "src/net40/LocationChangedEventArgs.cs",
+        "src/net40/LocationHint.cs",
+        "src/net40/MoveItemRequest.cs",
+        "src/net40/NewTabHost.cs",
+        "src/net40/OrderChangedEventArgs.cs",
+        "src/net40/PositionMonitor.cs",
+        "src/net40/Properties/AssemblyInfo.cs",
+        "src/net40/Properties/Resources.Designer.cs",
+        "src/net40/Properties/Settings.Designer.cs",
+        "src/net40/Referenceless/AnonymousDisposable.cs",
+        "src/net40/Referenceless/DefaultDisposable.cs",
+        "src/net40/Referenceless/Disposable.cs",
+        "src/net40/Referenceless/ICancelable.cs",
+        "src/net40/Referenceless/SerialDisposable.cs",
+        "src/net40/StackOrganiser.cs",
+        "src/net40/StackPositionMonitor.cs",
+        "src/net40/StoryboardCompletionListener.cs",
+        "src/net40/TabEmptiedResponse.cs",
+        "src/net40/TabablzControl.cs",
+        "src/net40/TabablzHeaderSizeConverter.cs",
+        "src/net40/TabablzItemStyleSelector.cs",
+        "src/net40/Themes/BrushToRadialGradientBrushConverter.cs",
+        "src/net40/Themes/MaterialDesignAssist.cs",
+        "src/net40/Themes/Ripple.cs",
+        "src/net40/Themes/RippleAssist.cs",
+        "src/net40/Themes/SystemCommandIcon.cs",
+        "src/net40/Trapezoid.cs",
+        "src/net40/VerticalOrganiser.cs",
+        "src/net40/VerticalPositionMonitor.cs",
+        "src/net40/obj/Release/net40/.NETFramework,Version=v4.0.AssemblyAttributes.cs",
+        "src/net40/obj/Release/net40/GeneratedInternalTypeHelper.g.cs",
+        "src/net40/obj/Release/net45/.NETFramework,Version=v4.5.AssemblyAttributes.cs",
+        "src/net40/obj/Release/net45/GeneratedInternalTypeHelper.g.cs",
+        "src/net40/obj/Release/netcoreapp3.0/.NETCoreApp,Version=v3.0.AssemblyAttributes.cs",
+        "src/net40/obj/Release/netcoreapp3.0/GeneratedInternalTypeHelper.g.cs",
+        "src/net45/CanvasOrganiser.cs",
+        "src/net45/ContainerCustomisations.cs",
+        "src/net45/Converters/BooleanAndToVisibilityConverter.cs",
+        "src/net45/Converters/EqualityToBooleanConverter.cs",
+        "src/net45/Converters/EqualityToVisibilityConverter.cs",
+        "src/net45/Converters/ShowDefaultCloseButtonConverter.cs",
+        "src/net45/Core/CollectionTeaser.cs",
+        "src/net45/Core/Extensions.cs",
+        "src/net45/Core/FuncComparer.cs",
+        "src/net45/Core/HitTest.cs",
+        "src/net45/Core/InterTabTransfer.cs",
+        "src/net45/Core/MultiComparer.cs",
+        "src/net45/Core/Native.cs",
+        "src/net45/Core/SystemCommand.cs",
+        "src/net45/Core/TabHeaderDragStartInformation.cs",
+        "src/net45/Core/WindowMessage.cs",
+        "src/net45/DefaultInterLayoutClient.cs",
+        "src/net45/DefaultInterTabClient.cs",
+        "src/net45/Dockablz/Branch.cs",
+        "src/net45/Dockablz/BranchAccessor.cs",
+        "src/net45/Dockablz/BranchItem.cs",
+        "src/net45/Dockablz/BranchResult.cs",
+        "src/net45/Dockablz/CouldBeHeaderedStyleSelector.cs",
+        "src/net45/Dockablz/DropZone.cs",
+        "src/net45/Dockablz/DropZoneLocation.cs",
+        "src/net45/Dockablz/Extensions.cs",
+        "src/net45/Dockablz/Finder.cs",
+        "src/net45/Dockablz/FloatRequestedEvent.cs",
+        "src/net45/Dockablz/FloatTransfer.cs",
+        "src/net45/Dockablz/FloatingItemSnapShot.cs",
+        "src/net45/Dockablz/Layout.cs",
+        "src/net45/Dockablz/LayoutAccessor.cs",
+        "src/net45/Dockablz/LocationReport.cs",
+        "src/net45/Dockablz/LocationReportBuilder.cs",
+        "src/net45/Dockablz/LocationReportException.cs",
+        "src/net45/Dockablz/LocationSnapShot.cs",
+        "src/net45/Dockablz/Tiler.cs",
+        "src/net45/Dockablz/TilerCalculator.cs",
+        "src/net45/DragablzColors.cs",
+        "src/net45/DragablzDragCompletedEventArgs.cs",
+        "src/net45/DragablzDragDeltaEventArgs.cs",
+        "src/net45/DragablzDragStartedEventArgs.cs",
+        "src/net45/DragablzIcon.cs",
+        "src/net45/DragablzItem.cs",
+        "src/net45/DragablzItemEventArgs.cs",
+        "src/net45/DragablzItemsControl.cs",
+        "src/net45/DragablzWindow.cs",
+        "src/net45/EmptyHeaderSizingHint.cs",
+        "src/net45/HeaderedDragablzItem.cs",
+        "src/net45/HeaderedItemViewModel.cs",
+        "src/net45/HorizontalOrganiser.cs",
+        "src/net45/HorizontalPositionMonitor.cs",
+        "src/net45/IInterLayoutClient.cs",
+        "src/net45/IInterTabClient.cs",
+        "src/net45/IItemsOrganiser.cs",
+        "src/net45/IManualInterTabClient.cs",
+        "src/net45/INewTabHost.cs",
+        "src/net45/InterTabController.cs",
+        "src/net45/ItemActionCallbackArgs.cs",
+        "src/net45/LocationChangedEventArgs.cs",
+        "src/net45/LocationHint.cs",
+        "src/net45/MoveItemRequest.cs",
+        "src/net45/NewTabHost.cs",
+        "src/net45/OrderChangedEventArgs.cs",
+        "src/net45/PositionMonitor.cs",
+        "src/net45/Properties/AssemblyInfo.cs",
+        "src/net45/Properties/Resources.Designer.cs",
+        "src/net45/Properties/Settings.Designer.cs",
+        "src/net45/Referenceless/AnonymousDisposable.cs",
+        "src/net45/Referenceless/DefaultDisposable.cs",
+        "src/net45/Referenceless/Disposable.cs",
+        "src/net45/Referenceless/ICancelable.cs",
+        "src/net45/Referenceless/SerialDisposable.cs",
+        "src/net45/StackOrganiser.cs",
+        "src/net45/StackPositionMonitor.cs",
+        "src/net45/StoryboardCompletionListener.cs",
+        "src/net45/TabEmptiedResponse.cs",
+        "src/net45/TabablzControl.cs",
+        "src/net45/TabablzHeaderSizeConverter.cs",
+        "src/net45/TabablzItemStyleSelector.cs",
+        "src/net45/Themes/BrushToRadialGradientBrushConverter.cs",
+        "src/net45/Themes/MaterialDesignAssist.cs",
+        "src/net45/Themes/Ripple.cs",
+        "src/net45/Themes/RippleAssist.cs",
+        "src/net45/Themes/SystemCommandIcon.cs",
+        "src/net45/Trapezoid.cs",
+        "src/net45/VerticalOrganiser.cs",
+        "src/net45/VerticalPositionMonitor.cs",
+        "src/net45/obj/Release/net40/.NETFramework,Version=v4.0.AssemblyAttributes.cs",
+        "src/net45/obj/Release/net40/GeneratedInternalTypeHelper.g.cs",
+        "src/net45/obj/Release/net45/.NETFramework,Version=v4.5.AssemblyAttributes.cs",
+        "src/net45/obj/Release/net45/GeneratedInternalTypeHelper.g.cs",
+        "src/net45/obj/Release/netcoreapp3.0/.NETCoreApp,Version=v3.0.AssemblyAttributes.cs",
+        "src/net45/obj/Release/netcoreapp3.0/GeneratedInternalTypeHelper.g.cs",
+        "src/netcoreapp3.0/CanvasOrganiser.cs",
+        "src/netcoreapp3.0/ContainerCustomisations.cs",
+        "src/netcoreapp3.0/Converters/BooleanAndToVisibilityConverter.cs",
+        "src/netcoreapp3.0/Converters/EqualityToBooleanConverter.cs",
+        "src/netcoreapp3.0/Converters/EqualityToVisibilityConverter.cs",
+        "src/netcoreapp3.0/Converters/ShowDefaultCloseButtonConverter.cs",
+        "src/netcoreapp3.0/Core/CollectionTeaser.cs",
+        "src/netcoreapp3.0/Core/Extensions.cs",
+        "src/netcoreapp3.0/Core/FuncComparer.cs",
+        "src/netcoreapp3.0/Core/HitTest.cs",
+        "src/netcoreapp3.0/Core/InterTabTransfer.cs",
+        "src/netcoreapp3.0/Core/MultiComparer.cs",
+        "src/netcoreapp3.0/Core/Native.cs",
+        "src/netcoreapp3.0/Core/SystemCommand.cs",
+        "src/netcoreapp3.0/Core/TabHeaderDragStartInformation.cs",
+        "src/netcoreapp3.0/Core/WindowMessage.cs",
+        "src/netcoreapp3.0/DefaultInterLayoutClient.cs",
+        "src/netcoreapp3.0/DefaultInterTabClient.cs",
+        "src/netcoreapp3.0/Dockablz/Branch.cs",
+        "src/netcoreapp3.0/Dockablz/BranchAccessor.cs",
+        "src/netcoreapp3.0/Dockablz/BranchItem.cs",
+        "src/netcoreapp3.0/Dockablz/BranchResult.cs",
+        "src/netcoreapp3.0/Dockablz/CouldBeHeaderedStyleSelector.cs",
+        "src/netcoreapp3.0/Dockablz/DropZone.cs",
+        "src/netcoreapp3.0/Dockablz/DropZoneLocation.cs",
+        "src/netcoreapp3.0/Dockablz/Extensions.cs",
+        "src/netcoreapp3.0/Dockablz/Finder.cs",
+        "src/netcoreapp3.0/Dockablz/FloatRequestedEvent.cs",
+        "src/netcoreapp3.0/Dockablz/FloatTransfer.cs",
+        "src/netcoreapp3.0/Dockablz/FloatingItemSnapShot.cs",
+        "src/netcoreapp3.0/Dockablz/Layout.cs",
+        "src/netcoreapp3.0/Dockablz/LayoutAccessor.cs",
+        "src/netcoreapp3.0/Dockablz/LocationReport.cs",
+        "src/netcoreapp3.0/Dockablz/LocationReportBuilder.cs",
+        "src/netcoreapp3.0/Dockablz/LocationReportException.cs",
+        "src/netcoreapp3.0/Dockablz/LocationSnapShot.cs",
+        "src/netcoreapp3.0/Dockablz/Tiler.cs",
+        "src/netcoreapp3.0/Dockablz/TilerCalculator.cs",
+        "src/netcoreapp3.0/DragablzColors.cs",
+        "src/netcoreapp3.0/DragablzDragCompletedEventArgs.cs",
+        "src/netcoreapp3.0/DragablzDragDeltaEventArgs.cs",
+        "src/netcoreapp3.0/DragablzDragStartedEventArgs.cs",
+        "src/netcoreapp3.0/DragablzIcon.cs",
+        "src/netcoreapp3.0/DragablzItem.cs",
+        "src/netcoreapp3.0/DragablzItemEventArgs.cs",
+        "src/netcoreapp3.0/DragablzItemsControl.cs",
+        "src/netcoreapp3.0/DragablzWindow.cs",
+        "src/netcoreapp3.0/EmptyHeaderSizingHint.cs",
+        "src/netcoreapp3.0/HeaderedDragablzItem.cs",
+        "src/netcoreapp3.0/HeaderedItemViewModel.cs",
+        "src/netcoreapp3.0/HorizontalOrganiser.cs",
+        "src/netcoreapp3.0/HorizontalPositionMonitor.cs",
+        "src/netcoreapp3.0/IInterLayoutClient.cs",
+        "src/netcoreapp3.0/IInterTabClient.cs",
+        "src/netcoreapp3.0/IItemsOrganiser.cs",
+        "src/netcoreapp3.0/IManualInterTabClient.cs",
+        "src/netcoreapp3.0/INewTabHost.cs",
+        "src/netcoreapp3.0/InterTabController.cs",
+        "src/netcoreapp3.0/ItemActionCallbackArgs.cs",
+        "src/netcoreapp3.0/LocationChangedEventArgs.cs",
+        "src/netcoreapp3.0/LocationHint.cs",
+        "src/netcoreapp3.0/MoveItemRequest.cs",
+        "src/netcoreapp3.0/NewTabHost.cs",
+        "src/netcoreapp3.0/OrderChangedEventArgs.cs",
+        "src/netcoreapp3.0/PositionMonitor.cs",
+        "src/netcoreapp3.0/Properties/AssemblyInfo.cs",
+        "src/netcoreapp3.0/Properties/Resources.Designer.cs",
+        "src/netcoreapp3.0/Properties/Settings.Designer.cs",
+        "src/netcoreapp3.0/Referenceless/AnonymousDisposable.cs",
+        "src/netcoreapp3.0/Referenceless/DefaultDisposable.cs",
+        "src/netcoreapp3.0/Referenceless/Disposable.cs",
+        "src/netcoreapp3.0/Referenceless/ICancelable.cs",
+        "src/netcoreapp3.0/Referenceless/SerialDisposable.cs",
+        "src/netcoreapp3.0/StackOrganiser.cs",
+        "src/netcoreapp3.0/StackPositionMonitor.cs",
+        "src/netcoreapp3.0/StoryboardCompletionListener.cs",
+        "src/netcoreapp3.0/TabEmptiedResponse.cs",
+        "src/netcoreapp3.0/TabablzControl.cs",
+        "src/netcoreapp3.0/TabablzHeaderSizeConverter.cs",
+        "src/netcoreapp3.0/TabablzItemStyleSelector.cs",
+        "src/netcoreapp3.0/Themes/BrushToRadialGradientBrushConverter.cs",
+        "src/netcoreapp3.0/Themes/MaterialDesignAssist.cs",
+        "src/netcoreapp3.0/Themes/Ripple.cs",
+        "src/netcoreapp3.0/Themes/RippleAssist.cs",
+        "src/netcoreapp3.0/Themes/SystemCommandIcon.cs",
+        "src/netcoreapp3.0/Trapezoid.cs",
+        "src/netcoreapp3.0/VerticalOrganiser.cs",
+        "src/netcoreapp3.0/VerticalPositionMonitor.cs",
+        "src/netcoreapp3.0/obj/Release/net40/.NETFramework,Version=v4.0.AssemblyAttributes.cs",
+        "src/netcoreapp3.0/obj/Release/net40/GeneratedInternalTypeHelper.g.cs",
+        "src/netcoreapp3.0/obj/Release/net45/.NETFramework,Version=v4.5.AssemblyAttributes.cs",
+        "src/netcoreapp3.0/obj/Release/net45/GeneratedInternalTypeHelper.g.cs",
+        "src/netcoreapp3.0/obj/Release/netcoreapp3.0/.NETCoreApp,Version=v3.0.AssemblyAttributes.cs",
+        "src/netcoreapp3.0/obj/Release/netcoreapp3.0/GeneratedInternalTypeHelper.g.cs"
+      ]
+    },
+    "MaterialDesignColors/2.0.5": {
+      "sha512": "y5gEo4wo46CTiaTOiROPoKqTW5LJAu0g6b+yd0MslS3Fppu6hMheOIIkrmvvpFPbC4jbgAwakYYCzPKWbHC4LQ==",
+      "type": "package",
+      "path": "materialdesigncolors/2.0.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "images/MaterialDesignColors.Icon.png",
+        "lib/net452/MaterialDesignColors.dll",
+        "lib/net452/MaterialDesignColors.pdb",
+        "lib/netcoreapp3.1/MaterialDesignColors.dll",
+        "lib/netcoreapp3.1/MaterialDesignColors.pdb",
+        "materialdesigncolors.2.0.5.nupkg.sha512",
+        "materialdesigncolors.nuspec"
+      ]
+    },
+    "Microsoft.Win32.Registry/4.7.0": {
+      "sha512": "KSrRMb5vNi0CWSGG1++id2ZOs/1QhRqROt+qgbEAdQuGjGrFcl4AOl4/exGPUYz2wUnU42nvJqon1T3U0kPXLA==",
+      "type": "package",
+      "path": "microsoft.win32.registry/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net46/Microsoft.Win32.Registry.dll",
+        "lib/net461/Microsoft.Win32.Registry.dll",
+        "lib/net461/Microsoft.Win32.Registry.xml",
+        "lib/netstandard1.3/Microsoft.Win32.Registry.dll",
+        "lib/netstandard2.0/Microsoft.Win32.Registry.dll",
+        "lib/netstandard2.0/Microsoft.Win32.Registry.xml",
+        "microsoft.win32.registry.4.7.0.nupkg.sha512",
+        "microsoft.win32.registry.nuspec",
+        "ref/net46/Microsoft.Win32.Registry.dll",
+        "ref/net461/Microsoft.Win32.Registry.dll",
+        "ref/net461/Microsoft.Win32.Registry.xml",
+        "ref/net472/Microsoft.Win32.Registry.dll",
+        "ref/net472/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/Microsoft.Win32.Registry.dll",
+        "ref/netstandard1.3/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/de/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/es/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/fr/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/it/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/ja/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/ko/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/ru/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/zh-hans/Microsoft.Win32.Registry.xml",
+        "ref/netstandard1.3/zh-hant/Microsoft.Win32.Registry.xml",
+        "ref/netstandard2.0/Microsoft.Win32.Registry.dll",
+        "ref/netstandard2.0/Microsoft.Win32.Registry.xml",
+        "runtimes/unix/lib/netstandard2.0/Microsoft.Win32.Registry.dll",
+        "runtimes/unix/lib/netstandard2.0/Microsoft.Win32.Registry.xml",
+        "runtimes/win/lib/net46/Microsoft.Win32.Registry.dll",
+        "runtimes/win/lib/net461/Microsoft.Win32.Registry.dll",
+        "runtimes/win/lib/net461/Microsoft.Win32.Registry.xml",
+        "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Registry.dll",
+        "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.dll",
+        "runtimes/win/lib/netstandard2.0/Microsoft.Win32.Registry.xml",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.Win32.SystemEvents/6.0.0": {
+      "sha512": "hqTM5628jSsQiv+HGpiq3WKBl2c8v1KZfby2J6Pr7pEPlK9waPdgEO6b8A/+/xn/yZ9ulv8HuqK71ONy2tg67A==",
+      "type": "package",
+      "path": "microsoft.win32.systemevents/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/Microsoft.Win32.SystemEvents.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/Microsoft.Win32.SystemEvents.dll",
+        "lib/net461/Microsoft.Win32.SystemEvents.xml",
+        "lib/net6.0/Microsoft.Win32.SystemEvents.dll",
+        "lib/net6.0/Microsoft.Win32.SystemEvents.xml",
+        "lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.dll",
+        "lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.xml",
+        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
+        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
+        "microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+        "microsoft.win32.systemevents.nuspec",
+        "runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll",
+        "runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.xml",
+        "runtimes/win/lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.dll",
+        "runtimes/win/lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.xml",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "ModernUI.WPF/1.0.9": {
+      "sha512": "50YFAwTzodJ7PXi/O7aQuElJ2SVAHh9WNpsXK/Z/iQUvtAHqjOzaATOzP4vuQUFlwdksgML9s151kI59qIfyDw==",
+      "type": "package",
+      "path": "modernui.wpf/1.0.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/FirstFloor.ModernUI.XML",
+        "lib/net40/FirstFloor.ModernUI.dll",
+        "lib/net40/Microsoft.Windows.Shell.dll",
+        "lib/net45/FirstFloor.ModernUI.XML",
+        "lib/net45/FirstFloor.ModernUI.dll",
+        "modernui.wpf.1.0.9.nupkg.sha512",
+        "modernui.wpf.nuspec"
+      ]
+    },
+    "runtime.native.System.Data.SqlClient.sni/4.7.0": {
+      "sha512": "9kyFSIdN3T0qjDQ2R0HRXYIhS3l5psBzQi6qqhdLz+SzFyEy4sVxNOke+yyYv8Cu8rPER12c3RDjLT8wF3WBYQ==",
+      "type": "package",
+      "path": "runtime.native.system.data.sqlclient.sni/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
+        "runtime.native.system.data.sqlclient.sni.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
+      "sha512": "LbrynESTp3bm5O/+jGL8v0Qg5SJlTV08lpIpFesXjF6uGNMWqFnUQbYBJwZTeua6E/Y7FIM1C54Ey1btLWupdg==",
+      "type": "package",
+      "path": "runtime.win-arm64.runtime.native.system.data.sqlclient.sni/4.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+        "runtime.win-arm64.runtime.native.system.data.sqlclient.sni.nuspec",
+        "runtimes/win-arm64/native/sni.dll",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
+      "sha512": "38ugOfkYJqJoX9g6EYRlZB5U2ZJH51UP8ptxZgdpS07FgOEToV+lS11ouNK2PM12Pr6X/PpT5jK82G3DwH/SxQ==",
+      "type": "package",
+      "path": "runtime.win-x64.runtime.native.system.data.sqlclient.sni/4.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+        "runtime.win-x64.runtime.native.system.data.sqlclient.sni.nuspec",
+        "runtimes/win-x64/native/sni.dll",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {
+      "sha512": "YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
+      "type": "package",
+      "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+        "runtime.win-x86.runtime.native.system.data.sqlclient.sni.nuspec",
+        "runtimes/win-x86/native/sni.dll",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Stub.System.Data.SQLite.Core.NetStandard/1.0.115.5": {
+      "sha512": "WfrqQg6WL+r4H1sVKTenNj6ERLXUukUxqcjH1rqPqXadeIWccTVpydESieD7cZ/NWQVSKLYIHuoBX5du+BFhIQ==",
+      "type": "package",
+      "path": "stub.system.data.sqlite.core.netstandard/1.0.115.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/System.Data.SQLite.dll",
+        "lib/netstandard2.0/System.Data.SQLite.dll.altconfig",
+        "lib/netstandard2.0/System.Data.SQLite.xml",
+        "lib/netstandard2.1/System.Data.SQLite.dll",
+        "lib/netstandard2.1/System.Data.SQLite.dll.altconfig",
+        "lib/netstandard2.1/System.Data.SQLite.xml",
+        "runtimes/linux-x64/native/SQLite.Interop.dll",
+        "runtimes/osx-x64/native/SQLite.Interop.dll",
+        "runtimes/win-x64/native/SQLite.Interop.dll",
+        "runtimes/win-x86/native/SQLite.Interop.dll",
+        "stub.system.data.sqlite.core.netstandard.1.0.115.5.nupkg.sha512",
+        "stub.system.data.sqlite.core.netstandard.nuspec"
+      ]
+    },
+    "System.Configuration.ConfigurationManager/6.0.0": {
+      "sha512": "7T+m0kDSlIPTHIkPMIu6m6tV6qsMqJpvQWW2jIc2qi7sn40qxFo0q+7mEQAhMPXZHMKnWrnv47ntGlM/ejvw3g==",
+      "type": "package",
+      "path": "system.configuration.configurationmanager/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Configuration.ConfigurationManager.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Configuration.ConfigurationManager.dll",
+        "lib/net461/System.Configuration.ConfigurationManager.xml",
+        "lib/net6.0/System.Configuration.ConfigurationManager.dll",
+        "lib/net6.0/System.Configuration.ConfigurationManager.xml",
+        "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll",
+        "lib/netstandard2.0/System.Configuration.ConfigurationManager.xml",
+        "runtimes/win/lib/net461/System.Configuration.ConfigurationManager.dll",
+        "runtimes/win/lib/net461/System.Configuration.ConfigurationManager.xml",
+        "system.configuration.configurationmanager.6.0.0.nupkg.sha512",
+        "system.configuration.configurationmanager.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Data.SqlClient/4.8.3": {
+      "sha512": "yERfVLXAY0QbylAgaGLByYN0hFxX28aeEQ0hUgJO+Ntn1AfmWl5HHUoYJA0Yl9HhIUUJHVaS/Sw/RLZr5aaC+A==",
+      "type": "package",
+      "path": "system.data.sqlclient/4.8.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net451/System.Data.SqlClient.dll",
+        "lib/net46/System.Data.SqlClient.dll",
+        "lib/net461/System.Data.SqlClient.dll",
+        "lib/net461/System.Data.SqlClient.xml",
+        "lib/netcoreapp2.1/System.Data.SqlClient.dll",
+        "lib/netcoreapp2.1/System.Data.SqlClient.xml",
+        "lib/netstandard1.2/System.Data.SqlClient.dll",
+        "lib/netstandard1.2/System.Data.SqlClient.xml",
+        "lib/netstandard1.3/System.Data.SqlClient.dll",
+        "lib/netstandard1.3/System.Data.SqlClient.xml",
+        "lib/netstandard2.0/System.Data.SqlClient.dll",
+        "lib/netstandard2.0/System.Data.SqlClient.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net451/System.Data.SqlClient.dll",
+        "ref/net46/System.Data.SqlClient.dll",
+        "ref/net461/System.Data.SqlClient.dll",
+        "ref/net461/System.Data.SqlClient.xml",
+        "ref/netcoreapp2.1/System.Data.SqlClient.dll",
+        "ref/netcoreapp2.1/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/System.Data.SqlClient.dll",
+        "ref/netstandard1.2/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/de/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/es/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/fr/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/it/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/ja/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/ko/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/ru/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/zh-hans/System.Data.SqlClient.xml",
+        "ref/netstandard1.2/zh-hant/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/System.Data.SqlClient.dll",
+        "ref/netstandard1.3/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/de/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/es/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/fr/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/it/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/ja/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/ko/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/ru/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/zh-hans/System.Data.SqlClient.xml",
+        "ref/netstandard1.3/zh-hant/System.Data.SqlClient.xml",
+        "ref/netstandard2.0/System.Data.SqlClient.dll",
+        "ref/netstandard2.0/System.Data.SqlClient.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll",
+        "runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.xml",
+        "runtimes/unix/lib/netstandard1.3/System.Data.SqlClient.dll",
+        "runtimes/unix/lib/netstandard2.0/System.Data.SqlClient.dll",
+        "runtimes/unix/lib/netstandard2.0/System.Data.SqlClient.xml",
+        "runtimes/win/lib/net451/System.Data.SqlClient.dll",
+        "runtimes/win/lib/net46/System.Data.SqlClient.dll",
+        "runtimes/win/lib/net461/System.Data.SqlClient.dll",
+        "runtimes/win/lib/net461/System.Data.SqlClient.xml",
+        "runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll",
+        "runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.xml",
+        "runtimes/win/lib/netstandard1.3/System.Data.SqlClient.dll",
+        "runtimes/win/lib/netstandard2.0/System.Data.SqlClient.dll",
+        "runtimes/win/lib/netstandard2.0/System.Data.SqlClient.xml",
+        "runtimes/win/lib/uap10.0.16299/System.Data.SqlClient.dll",
+        "runtimes/win/lib/uap10.0.16299/System.Data.SqlClient.xml",
+        "system.data.sqlclient.4.8.3.nupkg.sha512",
+        "system.data.sqlclient.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Data.SQLite.Core/1.0.115.5": {
+      "sha512": "vADIqqgpxaC5xR6qOV8/KMZkQeSDCfmmWpVOtQx0oEr3Yjq2XdTxX7+jfE4+oO2xPovAbYiz6Q5cLRbSsDkq6Q==",
+      "type": "package",
+      "path": "system.data.sqlite.core/1.0.115.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "system.data.sqlite.core.1.0.115.5.nupkg.sha512",
+        "system.data.sqlite.core.nuspec"
+      ]
+    },
+    "System.Drawing.Common/6.0.0": {
+      "sha512": "NfuoKUiP2nUWwKZN6twGqXioIe1zVD0RIj2t976A+czLHr2nY454RwwXs6JU9Htc6mwqL6Dn/nEL3dpVf2jOhg==",
+      "type": "package",
+      "path": "system.drawing.common/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Drawing.Common.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.Drawing.Common.dll",
+        "lib/net461/System.Drawing.Common.xml",
+        "lib/net6.0/System.Drawing.Common.dll",
+        "lib/net6.0/System.Drawing.Common.xml",
+        "lib/netcoreapp3.1/System.Drawing.Common.dll",
+        "lib/netcoreapp3.1/System.Drawing.Common.xml",
+        "lib/netstandard2.0/System.Drawing.Common.dll",
+        "lib/netstandard2.0/System.Drawing.Common.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "runtimes/unix/lib/net6.0/System.Drawing.Common.dll",
+        "runtimes/unix/lib/net6.0/System.Drawing.Common.xml",
+        "runtimes/unix/lib/netcoreapp3.1/System.Drawing.Common.dll",
+        "runtimes/unix/lib/netcoreapp3.1/System.Drawing.Common.xml",
+        "runtimes/win/lib/net6.0/System.Drawing.Common.dll",
+        "runtimes/win/lib/net6.0/System.Drawing.Common.xml",
+        "runtimes/win/lib/netcoreapp3.1/System.Drawing.Common.dll",
+        "runtimes/win/lib/netcoreapp3.1/System.Drawing.Common.xml",
+        "system.drawing.common.6.0.0.nupkg.sha512",
+        "system.drawing.common.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Memory/4.5.4": {
+      "sha512": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "type": "package",
+      "path": "system.memory/4.5.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Memory.dll",
+        "lib/net461/System.Memory.xml",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.1/System.Memory.dll",
+        "lib/netstandard1.1/System.Memory.xml",
+        "lib/netstandard2.0/System.Memory.dll",
+        "lib/netstandard2.0/System.Memory.xml",
+        "ref/netcoreapp2.1/_._",
+        "system.memory.4.5.4.nupkg.sha512",
+        "system.memory.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Security.AccessControl/6.0.0": {
+      "sha512": "AUADIc0LIEQe7MzC+I0cl0rAT8RrTAKFHl53yHjEUzNVIaUlhFY11vc2ebiVJzVBuOzun6F7FBA+8KAbGTTedQ==",
+      "type": "package",
+      "path": "system.security.accesscontrol/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Security.AccessControl.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Security.AccessControl.dll",
+        "lib/net461/System.Security.AccessControl.xml",
+        "lib/net6.0/System.Security.AccessControl.dll",
+        "lib/net6.0/System.Security.AccessControl.xml",
+        "lib/netstandard2.0/System.Security.AccessControl.dll",
+        "lib/netstandard2.0/System.Security.AccessControl.xml",
+        "runtimes/win/lib/net461/System.Security.AccessControl.dll",
+        "runtimes/win/lib/net461/System.Security.AccessControl.xml",
+        "runtimes/win/lib/net6.0/System.Security.AccessControl.dll",
+        "runtimes/win/lib/net6.0/System.Security.AccessControl.xml",
+        "runtimes/win/lib/netstandard2.0/System.Security.AccessControl.dll",
+        "runtimes/win/lib/netstandard2.0/System.Security.AccessControl.xml",
+        "system.security.accesscontrol.6.0.0.nupkg.sha512",
+        "system.security.accesscontrol.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Security.Cryptography.ProtectedData/6.0.0": {
+      "sha512": "rp1gMNEZpvx9vP0JW0oHLxlf8oSiQgtno77Y4PLUBjSiDYoD77Y8uXHr1Ea5XG4/pIKhqAdxZ8v8OTUtqo9PeQ==",
+      "type": "package",
+      "path": "system.security.cryptography.protecteddata/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Security.Cryptography.ProtectedData.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.Security.Cryptography.ProtectedData.dll",
+        "lib/net461/System.Security.Cryptography.ProtectedData.xml",
+        "lib/net6.0/System.Security.Cryptography.ProtectedData.dll",
+        "lib/net6.0/System.Security.Cryptography.ProtectedData.xml",
+        "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll",
+        "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "runtimes/win/lib/net461/System.Security.Cryptography.ProtectedData.dll",
+        "runtimes/win/lib/net461/System.Security.Cryptography.ProtectedData.xml",
+        "runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll",
+        "runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.xml",
+        "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll",
+        "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.xml",
+        "system.security.cryptography.protecteddata.6.0.0.nupkg.sha512",
+        "system.security.cryptography.protecteddata.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Security.Permissions/6.0.0": {
+      "sha512": "T/uuc7AklkDoxmcJ7LGkyX1CcSviZuLCa4jg3PekfJ7SU0niF0IVTXwUiNVP9DSpzou2PpxJ+eNY2IfDM90ZCg==",
+      "type": "package",
+      "path": "system.security.permissions/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Security.Permissions.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Security.Permissions.dll",
+        "lib/net461/System.Security.Permissions.xml",
+        "lib/net5.0/System.Security.Permissions.dll",
+        "lib/net5.0/System.Security.Permissions.xml",
+        "lib/net6.0/System.Security.Permissions.dll",
+        "lib/net6.0/System.Security.Permissions.xml",
+        "lib/netcoreapp3.1/System.Security.Permissions.dll",
+        "lib/netcoreapp3.1/System.Security.Permissions.xml",
+        "lib/netstandard2.0/System.Security.Permissions.dll",
+        "lib/netstandard2.0/System.Security.Permissions.xml",
+        "runtimes/win/lib/net461/System.Security.Permissions.dll",
+        "runtimes/win/lib/net461/System.Security.Permissions.xml",
+        "system.security.permissions.6.0.0.nupkg.sha512",
+        "system.security.permissions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Security.Principal.Windows/5.0.0": {
+      "sha512": "t0MGLukB5WAVU9bO3MGzvlGnyJPgUlcwerXn1kzBRjwLKixT96XV0Uza41W49gVd8zEMFu9vQEFlv0IOrytICA==",
+      "type": "package",
+      "path": "system.security.principal.windows/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net46/System.Security.Principal.Windows.dll",
+        "lib/net461/System.Security.Principal.Windows.dll",
+        "lib/net461/System.Security.Principal.Windows.xml",
+        "lib/netstandard1.3/System.Security.Principal.Windows.dll",
+        "lib/netstandard2.0/System.Security.Principal.Windows.dll",
+        "lib/netstandard2.0/System.Security.Principal.Windows.xml",
+        "lib/uap10.0.16299/_._",
+        "ref/net46/System.Security.Principal.Windows.dll",
+        "ref/net461/System.Security.Principal.Windows.dll",
+        "ref/net461/System.Security.Principal.Windows.xml",
+        "ref/netcoreapp3.0/System.Security.Principal.Windows.dll",
+        "ref/netcoreapp3.0/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/System.Security.Principal.Windows.dll",
+        "ref/netstandard1.3/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/de/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/es/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/fr/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/it/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/ja/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/ko/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/ru/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/zh-hans/System.Security.Principal.Windows.xml",
+        "ref/netstandard1.3/zh-hant/System.Security.Principal.Windows.xml",
+        "ref/netstandard2.0/System.Security.Principal.Windows.dll",
+        "ref/netstandard2.0/System.Security.Principal.Windows.xml",
+        "ref/uap10.0.16299/_._",
+        "runtimes/unix/lib/netcoreapp2.0/System.Security.Principal.Windows.dll",
+        "runtimes/unix/lib/netcoreapp2.0/System.Security.Principal.Windows.xml",
+        "runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.dll",
+        "runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.xml",
+        "runtimes/win/lib/net46/System.Security.Principal.Windows.dll",
+        "runtimes/win/lib/net461/System.Security.Principal.Windows.dll",
+        "runtimes/win/lib/net461/System.Security.Principal.Windows.xml",
+        "runtimes/win/lib/netcoreapp2.0/System.Security.Principal.Windows.dll",
+        "runtimes/win/lib/netcoreapp2.0/System.Security.Principal.Windows.xml",
+        "runtimes/win/lib/netcoreapp2.1/System.Security.Principal.Windows.dll",
+        "runtimes/win/lib/netcoreapp2.1/System.Security.Principal.Windows.xml",
+        "runtimes/win/lib/netstandard1.3/System.Security.Principal.Windows.dll",
+        "runtimes/win/lib/uap10.0.16299/_._",
+        "system.security.principal.windows.5.0.0.nupkg.sha512",
+        "system.security.principal.windows.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Windows.Extensions/6.0.0": {
+      "sha512": "IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
+      "type": "package",
+      "path": "system.windows.extensions/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net6.0/System.Windows.Extensions.dll",
+        "lib/net6.0/System.Windows.Extensions.xml",
+        "lib/netcoreapp3.1/System.Windows.Extensions.dll",
+        "lib/netcoreapp3.1/System.Windows.Extensions.xml",
+        "runtimes/win/lib/net6.0/System.Windows.Extensions.dll",
+        "runtimes/win/lib/net6.0/System.Windows.Extensions.xml",
+        "runtimes/win/lib/netcoreapp3.1/System.Windows.Extensions.dll",
+        "runtimes/win/lib/netcoreapp3.1/System.Windows.Extensions.xml",
+        "system.windows.extensions.6.0.0.nupkg.sha512",
+        "system.windows.extensions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0-windows7.0": [
+      "Dapper >= 2.0.123",
+      "Dragablz >= 0.0.3.223",
+      "MaterialDesignColors >= 2.0.5",
+      "ModernUI.WPF >= 1.0.9",
+      "System.Configuration.ConfigurationManager >= 6.0.0",
+      "System.Data.SQLite.Core >= 1.0.115.5",
+      "System.Data.SqlClient >= 4.8.3"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\FasT\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\Sandbox\\Code\\InputTracker\\InputTracker\\InputTracker.csproj",
+      "projectName": "Input Tracker",
+      "projectPath": "D:\\Sandbox\\Code\\InputTracker\\InputTracker\\InputTracker.csproj",
+      "packagesPath": "C:\\Users\\FasT\\.nuget\\packages\\",
+      "outputPath": "D:\\Sandbox\\Code\\InputTracker\\InputTracker\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\FasT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0-windows7.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0-windows7.0": {
+        "targetAlias": "net5.0-windows",
+        "dependencies": {
+          "Dapper": {
+            "target": "Package",
+            "version": "[2.0.123, )"
+          },
+          "Dragablz": {
+            "target": "Package",
+            "version": "[0.0.3.223, )"
+          },
+          "MaterialDesignColors": {
+            "target": "Package",
+            "version": "[2.0.5, )"
+          },
+          "ModernUI.WPF": {
+            "target": "Package",
+            "version": "[1.0.9, )"
+          },
+          "System.Configuration.ConfigurationManager": {
+            "target": "Package",
+            "version": "[6.0.0, )"
+          },
+          "System.Data.SQLite.Core": {
+            "target": "Package",
+            "version": "[1.0.115.5, )"
+          },
+          "System.Data.SqlClient": {
+            "target": "Package",
+            "version": "[4.8.3, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.16, 5.0.16]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WPF": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+      }
+    }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'ModernUI.WPF 1.0.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "ModernUI.WPF",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    }
+  ]
+}

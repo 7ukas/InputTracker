@@ -1,0 +1,34 @@
+﻿<Window x:Class="InputTracker.WindowMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+        MinHeight="615" MinWidth="680" Height="615" Width="680"
+        Title="Input Tracker" Loaded="_Window_Loaded" Closing="_Window_Closing">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="25"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <dragablz:TabablzControl Name="tabControl_Navigation" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" FixedHeaderCount="2" SelectionChanged="_OnTabControlSelectionChanged">
+            <TabItem Name="tabItem_Overview" Header="OVERVIEW"/>
+            <TabItem Name="tabItem_Live" Header="LIVE"/>
+            <TabItem Name="tabItem_Database" Header="DATABASE"/>
+        </dragablz:TabablzControl>
+
+        <Grid Name="grid_Window" Grid.Column="2" Grid.Row="2"/>
+    </Grid>
+
+
+</Window>
