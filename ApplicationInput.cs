@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Windows.Input;
 
 namespace InputTracker {
     public class ApplicationInput {

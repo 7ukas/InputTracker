@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using System.Linq;
-using InputTracker;
 
 namespace InputTracker {
     public partial class App : Application {

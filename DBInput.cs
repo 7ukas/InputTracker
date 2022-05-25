@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace InputTracker {
+﻿namespace InputTracker {
     public class DBInput {
         public string Date { get; set; }
         public string Application { get; set; }

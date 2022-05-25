@@ -1,6 +1,4 @@
-﻿using InputTracker;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Windows.Input;
 
 namespace InputTracker {
