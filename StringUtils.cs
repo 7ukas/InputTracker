@@ -25,8 +25,9 @@ namespace InputTracker {
                     return $"{countStr.Substring(0, len - 3)}," +
                            $"{countStr.Substring(len - 3)}";
                 } else {
-                    return $"{countStr.Substring(0, len % 3)}," +
-                           $"{countStr.Substring(len % 3, len % 3 + 1)}," +
+                    string start = countStr.Substring(0, len % 3 == 0 ? 3 : len % 3);
+                    return $"{start}|" +
+                           $"{countStr.Substring(start.Length, 3)}," +
                            $"{countStr.Substring(len - 3)}";
                 }
             } else return countStr;
