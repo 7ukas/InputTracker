@@ -114,7 +114,7 @@ namespace InputTracker {
                     grid_Window.Children[1].Visibility = Visibility.Visible;
                     grid_Window.Children[2].Visibility = Visibility.Hidden;
                 }
-            } else if (tabItem_Database == tabControl_Navigation.SelectedItem as TabItem) {
+            } else if (tabItem_History == tabControl_Navigation.SelectedItem as TabItem) {
                 if (grid_Window.Children.Count > 0) {
                     grid_Window.Children[0].Visibility = Visibility.Hidden;
                     grid_Window.Children[1].Visibility = Visibility.Hidden;

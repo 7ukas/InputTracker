@@ -13,7 +13,7 @@
     <Page Update="ImageDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="WindowDatabase.xaml">
+    <Page Update="WindowHistory.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="WindowOverview.xaml">

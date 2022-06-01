@@ -24,7 +24,7 @@
         <dragablz:TabablzControl Name="tabControl_Navigation" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" FixedHeaderCount="2" SelectionChanged="_OnTabControlSelectionChanged">
             <TabItem Name="tabItem_Overview" Header="OVERVIEW"/>
             <TabItem Name="tabItem_Live" Header="LIVE"/>
-            <TabItem Name="tabItem_Database" Header="DATABASE"/>
+            <TabItem Name="tabItem_History" Header="HISTORY"/>
         </dragablz:TabablzControl>
 
         <Grid Name="grid_Window" Grid.Column="2" Grid.Row="2"/>
