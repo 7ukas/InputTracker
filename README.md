@@ -27,7 +27,7 @@ With the help of SQLite, data is stored in to locally based database (located: b
 * Live log of accessed applications and keys pressed within them.
 * Keyboard and Mouse icons to notify once press or click happens.
 
-### Database
+### History
 * Calendar to choose in what time frame data should be displayed.
 * Content options to choose what columns of data to display/hide also includes options for empty (key-less) records and maximum number of lines.
 * Data table of used applications and data collected within them such as it's process and window names, text, key strokes, mouse clicks.
