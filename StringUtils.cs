@@ -26,7 +26,7 @@ namespace InputTracker {
                            $"{countStr.Substring(len - 3)}";
                 } else {
                     string start = countStr.Substring(0, len % 3 == 0 ? 3 : len % 3);
-                    return $"{start}|" +
+                    return $"{start}," +
                            $"{countStr.Substring(start.Length, 3)}," +
                            $"{countStr.Substring(len - 3)}";
                 }
