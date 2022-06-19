@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows.Input;
 
 namespace InputTracker {
-    public class KeyMonitor {
+    public class KeyMonitor : IMonitor<KeyInput> {
         private List<KeyInput> _inputs;
 
         public KeyMonitor() {
@@ -48,6 +48,14 @@ namespace InputTracker {
 
         public int Count() {
             return _inputs.Count();
+        }
+
+        public void Remove(KeyInput input) {
+            _inputs.Remove(input);
+        }
+
+        public void Clear() {
+            _inputs.Clear();
         }
     }
 }

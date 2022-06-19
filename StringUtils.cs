@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 
 namespace InputTracker {
-    public class StringUtils {
+    public sealed class StringUtils {
         /* Replaces certain special characters for database */
         public static string EscapeTitle(string str) {
             return str.Replace("\\", "[backslash]")

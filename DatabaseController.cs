@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace InputTracker {
-    public class DatabaseController {
+    public sealed class DatabaseController {
         // Connection
         private static string _connectionName = "Default";
 

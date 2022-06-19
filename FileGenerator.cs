@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Win32;
 
 namespace InputTracker {
-    public class FileGenerator {
+    public sealed class FileGenerator {
         private List<DBInput> _inputs;
 
         public FileGenerator(List<DBInput> inputs) {

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 
 namespace InputTracker {
-    public class ApplicationMonitor {
+    public class ApplicationMonitor : IMonitor<ApplicationInput> {
         private List<ApplicationInput> _inputs;
 
         public ApplicationMonitor() {
@@ -60,6 +60,14 @@ namespace InputTracker {
 
         public void Clear() {
             _inputs.Clear();
+        }
+
+        public int Count() {
+            return _inputs.Count();
+        }
+
+        public void Remove(ApplicationInput input) {
+            _inputs.Remove(input);
         }
     }
 }
