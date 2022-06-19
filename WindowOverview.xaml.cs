@@ -11,7 +11,8 @@ namespace InputTracker {
         private List<DBApplication> _applications = new List<DBApplication>();
         private List<DBStatistics> _stats = new List<DBStatistics>();
 
-        private const int _maxTitleLength = 28; // of Application in Top 5 table
+        private const int _maxTitleLength = 28; // of Application string in Top 5 table
+        private TopTableSortOrder _topTableSortOrder;
 
         public WindowOverview() {
             InitializeComponent();
@@ -41,8 +42,7 @@ namespace InputTracker {
             DBStatistics stats = null;
 
             DateTime curr = DateTime.Today;
-            DateTime start;
-            DateTime end;
+            DateTime start, end;
 
             // Statistics: Today / Total
             if (textBlock_Main.Text == "Total") {
@@ -88,19 +88,18 @@ namespace InputTracker {
             textBlock_Week_MouseClicks.Text = StringUtils.FormatCount(stats.MouseClicks);
 
             // Applications: Top 5
-            _applications = DatabaseController.GetApplications()
-                .OrderByDescending(x => x.KeyStrokes)
-                .ThenByDescending(x => x.MouseClicks).ToList();
-
-            _InitializeApplicationsTop(true);
+            _applications = DatabaseController.GetApplications();
+            _InitializeApplicationsTop(_topTableSortOrder);
         }
 
-        private void _InitializeApplicationsTop(bool keyStrokesOrder) {
-            if (keyStrokesOrder) {
-                _applications = _applications.OrderByDescending(x => x.KeyStrokes)
+        private void _InitializeApplicationsTop(TopTableSortOrder order) {
+            if (order == TopTableSortOrder.KeyStrokes) {
+                _applications = _applications
+                    .OrderByDescending(x => x.KeyStrokes)
                     .ThenByDescending(x => x.MouseClicks).ToList();
-            } else {
-                _applications = _applications.OrderByDescending(x => x.MouseClicks)
+            } else if (order == TopTableSortOrder.MouseClicks) {
+                _applications = _applications
+                    .OrderByDescending(x => x.MouseClicks)
                     .ThenByDescending(x => x.KeyStrokes).ToList();
             }
 
@@ -157,12 +156,19 @@ namespace InputTracker {
             }
         }
 
-        private void _OnStrokesColumnClicked(object sender, MouseButtonEventArgs e) {
-            _InitializeApplicationsTop(true);
+        private void _OnKeyStrokesColumnClicked(object sender, MouseButtonEventArgs e) {
+            _topTableSortOrder = TopTableSortOrder.KeyStrokes;
+            _InitializeApplicationsTop(_topTableSortOrder);
         }
 
-        private void _OnClicksColumnClicked(object sender, MouseButtonEventArgs e) {
-            _InitializeApplicationsTop(false);
+        private void _OnMouseClicksColumnClicked(object sender, MouseButtonEventArgs e) {
+            _topTableSortOrder = TopTableSortOrder.MouseClicks;
+            _InitializeApplicationsTop(_topTableSortOrder);
         }
+    }
+
+    enum TopTableSortOrder {
+        KeyStrokes = 0,
+        MouseClicks = 1
     }
 }

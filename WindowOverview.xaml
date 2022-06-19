@@ -102,13 +102,13 @@
                 </Border>
             </StackPanel>
             
-            <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Style="{StaticResource Hover}" MouseDown="_OnStrokesColumnClicked">
+            <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Style="{StaticResource Hover}" MouseDown="_OnKeyStrokesColumnClicked">
                 <Border Width="394" Height="42" Background="#3473DB">
                     <Image Width="30" Source="{StaticResource Keyboard_White}" HorizontalAlignment="Left" Margin="53,0,0,0" VerticalAlignment="Center"/>
                 </Border>
             </StackPanel>
             
-            <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left" Style="{StaticResource Hover}" MouseDown="_OnClicksColumnClicked">
+            <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left" Style="{StaticResource Hover}" MouseDown="_OnMouseClicksColumnClicked">
                 <Border Width="394" Height="42" Background="#3473DB">
                     <Image Width="30" Source="{StaticResource Mouse_White}" HorizontalAlignment="Left" Margin="55,0,0,0" VerticalAlignment="Center"/>
                 </Border>
