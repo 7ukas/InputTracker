@@ -168,7 +168,7 @@ namespace InputTracker {
 
             // Add previous application and inputs that came with it
             ApplicationInput input = new ApplicationInput(DateTime.Now, _lastAppTitle, _lastAppWindowTitle, _keyMonitor, _mouseMonitor);
-            WindowMain.input = input;
+            WindowMain._input = input;
             _appMonitor.Add(input);
 
             // Update database

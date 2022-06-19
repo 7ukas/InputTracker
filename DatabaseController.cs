@@ -27,8 +27,8 @@ namespace InputTracker {
             return new SQLiteConnection(connectionString, true);
         }
 
-        public static Task Update(ApplicationInput input) {
-            if (input == null) return null;
+        public static void Update(ApplicationInput input) {
+            if (input == null) return;
 
             using (IDbConnection connection = GetConnection()) {
                 StringBuilder query = new StringBuilder();
@@ -61,8 +61,6 @@ namespace InputTracker {
 
                 connection.Execute(query.ToString());
             }
-
-            return Task.CompletedTask;
         }
 
         public static List<DBInput> GetInputs(DateTime start, DateTime end, int maxRows) {

@@ -165,10 +165,10 @@ namespace InputTracker {
             _topTableSortOrder = TopTableSortOrder.MouseClicks;
             _InitializeApplicationsTop(_topTableSortOrder);
         }
-    }
 
-    enum TopTableSortOrder {
-        KeyStrokes = 0,
-        MouseClicks = 1
+        private enum TopTableSortOrder {
+            KeyStrokes = 0,
+            MouseClicks = 1
+        }
     }
 }

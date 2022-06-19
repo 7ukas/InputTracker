@@ -16,7 +16,7 @@ namespace InputTracker {
         private static WindowLive _windowLive = new WindowLive();
 
         // Database
-        public static ApplicationInput input;
+        public static ApplicationInput _input;
         private static WindowDatabase _windowDatabase = new WindowDatabase();
         private static DateTime _lastUpdate = DateTime.Now;
 
@@ -68,15 +68,15 @@ namespace InputTracker {
         }
 
         public async static void UpdateDatabase() {
-            await Task.Run(() => { DatabaseController.Update(input); });
-            input = null;
+            await Task.Run(() => { DatabaseController.Update(_input); });
+            _input = null;
             _windowOverview.OnDatabaseUpdated();
             _lastUpdate = DateTime.Now;
         }
 
         public static void ClearDatabase() {
             DatabaseController.ClearDatabase();
-            input = null;
+            _input = null;
 
             App.LiveSettings.IsTracking = false;
             _windowLive.toggleButton_Tracking.IsChecked = App.LiveSettings.IsTracking;
