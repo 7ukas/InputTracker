@@ -6,12 +6,11 @@ using System.Windows.Input;
 
 namespace InputTracker {
     public class InputDeviceListener {
-        /* Sets the hook for low-level keyboard monitoring 
-           > int idHook as HookType
-           > LowLevelKeyboardProc lpfn as HookProc
-         */
+        /* Sets the hook for low-level keyboard monitoring */
         [DllImport("user32.dll", SetLastError = true)]
         private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
+
+        /* Sets the hook for low-level mouse monitoring */
         [DllImport("user32.dll", SetLastError = true)]
         private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelMouseProc lpfn, IntPtr hMod, uint dwThreadId);
 
@@ -22,9 +21,6 @@ namespace InputTracker {
         /* Discards current hook */
         [DllImport("user32.dll", SetLastError = true)]
         private static extern bool UnhookWindowsHookEx(IntPtr hhk);
-
-        [DllImport("user32.dll")]
-        private static extern short GetKeyState(int nVirtKey);
 
         /* ... */
         [DllImport("kernel32.dll")]
@@ -38,42 +34,33 @@ namespace InputTracker {
         [DllImport("user32.dll", SetLastError = true)]
         private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
 
-        // Delegates
-        private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
-        private delegate IntPtr LowLevelMouseProc(int nCode, IntPtr wParam, IntPtr lParam);
-
-        // Event Handlers
-        public event EventHandler<KeyPressedArgs> OnKeyPressed;
-        public event EventHandler<ButtonClickedArgs> OnButtonClicked;
-
-        // Proccesors, Hooks (IntPtr), IDs
-        private LowLevelKeyboardProc _keyboardProc;
-        private LowLevelMouseProc _mouseProc;
+        // Hooks (IntPtr), IDs
         private IntPtr _keyboardHook = IntPtr.Zero;
         private IntPtr _mouseHook = IntPtr.Zero;
         private const int _KeyboardHookId = 13;
         private const int _MouseHookId = 14;
 
-        // WM_KEYDOWN, WM_SYSKEYDOWN
-        private List<IntPtr> _WMKeys = new() {
-            (IntPtr)0x0100,
-            (IntPtr)0x0104,
-        };
+        // Keyboard flags: WM_KEYDOWN, WM_SYSKEYDOWN
+        // Mouse flags: WM_LBUTTONDOWN, WM_RBUTTONDOWN, WM_MBUTTONDOWN
+        private List<IntPtr> _WMKeys = new() { (IntPtr)0x0100, (IntPtr)0x0104 };
+        private List<IntPtr> _WMButtons = new() { (IntPtr)0x0201, (IntPtr)0x0204, (IntPtr)0x0207 };
 
-        // WM_LBUTTONDOWN, WM_RBUTTONDOWN, WM_MBUTTONDOWN
-        private List<IntPtr> _WMButtons = new() {
-            (IntPtr)0x0201,
-            (IntPtr)0x0204,
-            (IntPtr)0x0207
-        };
-
-        // Data saved
+        // Data
         private List<Key> _keys;
         private List<MouseButton> _buttons;
         private List<Dictionary<string, bool>> _modifiers;
         Dictionary<string, bool> _modifiersMap = new Dictionary<string, bool>{
                 {"Shift", false}, {"CapsLock", false}
         };
+
+        // Delegates: keyboard/mouse callbacks
+        // Event Handlers: key/button click
+        private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
+        private delegate IntPtr LowLevelMouseProc(int nCode, IntPtr wParam, IntPtr lParam);
+        private LowLevelKeyboardProc _keyboardProc;
+        private LowLevelMouseProc _mouseProc;
+        public event EventHandler<KeyPressedArgs> OnKeyPressed;
+        public event EventHandler<ButtonClickedArgs> OnButtonClicked;
 
         public InputDeviceListener() {
             _keyboardProc = KeyboardHookCallback;
@@ -91,12 +78,11 @@ namespace InputTracker {
 
         public void HookKeyboard() {
             /* 
-             * 13           id of LowLevelKeyboardProc hook procedure 
-             * _keyboardProc      LowLevelKeyboardProc callback function
-             * hMod         current process module
-             * 0            hook procedure is associated with all existing threads 
-             *                  running in the same desktop
-             */
+             * 13               id of LowLevelKeyboardProc hook procedure 
+             * _keyboardProc    LowLevelKeyboardProc callback function
+             * hMod             current process module
+             * 0                hook procedure is associated with all existing threads 
+             *                      running in the same desktop */
 
             IntPtr hMod = GetModuleHandle(Process.GetCurrentProcess().MainModule.ModuleName);
             _keyboardHook = SetWindowsHookEx(_KeyboardHookId, _keyboardProc, hMod, 0);
@@ -105,13 +91,6 @@ namespace InputTracker {
         public void HookMouse() {
             IntPtr hMod = GetModuleHandle(Process.GetCurrentProcess().MainModule.ModuleName);
             _mouseHook = SetWindowsHookEx(_MouseHookId, _mouseProc, hMod, 0);
-        }
-
-        public string GetApplication() {
-            uint procId = 0;
-            GetWindowThreadProcessId(GetForegroundWindow(), out procId);
-
-            return Process.GetProcessById((int)procId).MainWindowTitle;
         }
 
         private IntPtr KeyboardHookCallback(int nCode, IntPtr wParam, IntPtr lParam) {
@@ -126,6 +105,7 @@ namespace InputTracker {
                 _keys.Add(virtualKey);
                 _modifiers.Add(new Dictionary<string, bool>(_modifiersMap));
             }
+
             return CallNextHookEx(_keyboardHook, nCode, wParam, lParam);
         }
 

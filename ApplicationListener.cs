@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace InputTracker {
     public class ApplicationListener {
-        // Sets an event hook function for a range of events
+        /* Sets an event hook function for a range of events */
         [DllImport("user32.dll")]
         private static extern IntPtr SetWinEventHook(uint eventMin, uint eventMax, IntPtr hmodWinEventProc, WinEventDelegate lpfnWinEventProc, uint idProcess, uint idThread, uint dwFlags);
 
@@ -20,31 +20,28 @@ namespace InputTracker {
         [DllImport("user32.dll", SetLastError = true)]
         private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
 
-        // Delegate
-        private delegate void WinEventDelegate(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject,
-            int idChild, uint dwEventThread, uint dwmsEventTime);
-
-        // Event Handler
-        public event EventHandler<ApplicationChangedArgs> OnApplicationChanged;
-
-        // Delegate, Hook (IntPtr), IDs
-        private WinEventDelegate _winEvent;
-        private IntPtr _applicationHook = IntPtr.Zero;
+        // Hook (IntPtr), IDs
         private const uint WINEVENT_OUTOFCONTEXT = 0;
         private const uint EVENT_SYSTEM_FOREGROUND = 3; // The foreground window has changed. 
 
         public ApplicationListener() { }
 
         ~ApplicationListener() {
-            UnhookWindowsHookEx(_applicationHook);
+            UnhookWindowsHookEx(IntPtr.Zero);
         }
+
+        // Delegate: callback function
+        // Event Handler: application changed
+        private delegate void WinEventDelegate(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime);
+        private WinEventDelegate _winEvent;
+        public event EventHandler<ApplicationChangedArgs> OnApplicationChanged;
 
         public void HookApplication() {
             _winEvent = new WinEventDelegate(WinEventProc);
-            IntPtr _applicationHook = SetWinEventHook(EVENT_SYSTEM_FOREGROUND, EVENT_SYSTEM_FOREGROUND,
-                IntPtr.Zero, _winEvent, 0, 0, WINEVENT_OUTOFCONTEXT);
+            SetWinEventHook(EVENT_SYSTEM_FOREGROUND, EVENT_SYSTEM_FOREGROUND, IntPtr.Zero, _winEvent, 0, 0, WINEVENT_OUTOFCONTEXT);
         }
 
+        // Callback function
         private void WinEventProc(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime) {
             uint procId = 0;
 
