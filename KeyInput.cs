@@ -3,16 +3,15 @@ using System.Windows.Input;
 
 namespace InputTracker {
     public class KeyInput {
-        private Key _key;
+        private Key _key = 0;
         private Dictionary<string, bool> _modifiers;
         private string _rawText;
         private string _regularText;
 
         public KeyInput(Key key, Dictionary<string, bool> modifiers) {
-
-            if (!App.KeyboardKeys.ContainsKey(key)) {
-               _key = 0;
-            } else _key = key;
+            if (App.KeyboardKeys.ContainsKey(key)) {
+                _key = key;
+            }
 
             _modifiers = new Dictionary<string, bool>(modifiers);
 
@@ -23,11 +22,11 @@ namespace InputTracker {
             if (_regularText.Length > 0) {
                 bool keyIsLetter = _regularText.Length == 1 && char.IsLetter(_regularText[0]);
 
-                if (IsShiftDown) {
-                    if (!IsCapsLockToggled && keyIsLetter || !keyIsLetter) {
+                if (_IsShiftDown) {
+                    if (!_IsCapsLockToggled && keyIsLetter || !keyIsLetter) {
                         _regularText = App.KeyboardKeys[_key].ShiftText;
                     }
-                } else if (IsCapsLockToggled && !IsShiftDown && keyIsLetter) {
+                } else if (_IsCapsLockToggled && !_IsShiftDown && keyIsLetter) {
                     _regularText = App.KeyboardKeys[_key].ShiftText;
                 }
             }
@@ -48,12 +47,22 @@ namespace InputTracker {
             set { _regularText = value; }
         }
 
-        private bool IsShiftDown {
-            get { return _modifiers["Shift"]; }
+        private bool _IsShiftDown {
+            get {
+                bool value = false;
+                _modifiers.TryGetValue("Shift", out value);
+
+                return value;
+            }
         }
 
-        private bool IsCapsLockToggled {
-            get { return _modifiers["CapsLock"]; }
+        private bool _IsCapsLockToggled {
+            get {
+                bool value = false;
+                _modifiers.TryGetValue("CapsLock", out value);
+
+                return value;
+            }
         }
     }
 }

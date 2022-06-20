@@ -67,7 +67,7 @@ namespace InputTracker {
             }
         }
 
-        public async static void UpdateDatabase() {
+        public async static void UpdateDatabaseAsync() {
             await Task.Run(() => { DatabaseController.Update(_input); });
             _input = null;
             _windowOverview.OnDatabaseUpdated();
@@ -98,7 +98,7 @@ namespace InputTracker {
             _windowOverview.textBlock_5th_KeyStrokes.Text = "";
             _windowOverview.textBlock_5th_MouseClicks.Text = "";
 
-            UpdateDatabase();
+            UpdateDatabaseAsync();
         }
 
         private void _OnTabControlSelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -124,7 +124,7 @@ namespace InputTracker {
         }
 
         private void _Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) {
-            UpdateDatabase();
+            UpdateDatabaseAsync();
         }
     }
 }

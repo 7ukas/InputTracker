@@ -1,27 +1,34 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
 namespace InputTracker {
     public sealed class StringUtils {
-        /* Replaces certain special characters for database */
+        /* Replaces certain special characters for database to handle better */
         public static string EscapeTitle(string str) {
             return str.Replace("\\", "[backslash]")
                     .Replace("\'", "[qoute]")
                     .Replace("\"", "[double_qoute]");
         }
 
+
+        /* Replaces quotation marks for database to handle better */
         public static string EscapeText(string str) {
             return str.Replace("\'", "\"");
         }
 
+        /* Adds commas to given number between 1,000 and 1,000,000,000 
+         * for better visual appearance */
         public static string FormatCount(int count) {
             // Adds comma to given count; <1,000,000,000
+            if (count < 0 || count > 999999999) return "0";
+
             string countStr = count.ToString();
             int len = countStr.Length;
 
-            if (countStr.All(char.IsDigit) && len > 3) {
-                if (len < 7) {
+            if (len > 3) { // > 999
+                if (len < 7) { //> 9,999,999
                     return $"{countStr.Substring(0, len - 3)}," +
                            $"{countStr.Substring(len - 3)}";
                 } else {
@@ -33,6 +40,8 @@ namespace InputTracker {
             } else return countStr;
         }
 
+        /* Formats basic time span to days/hours/minutes/seconds
+         * for better visual appearance */
         public static string FormatLastUpdated(TimeSpan timeSpan) {
             int s = (int)timeSpan.TotalSeconds;
             if (s == 0) return "Now";
@@ -66,8 +75,10 @@ namespace InputTracker {
             return time.ToString();
         }
 
+        /* Removes first inputs from the log in order 
+         * to keep it under specified char limit */
         public static string ShrinkLog(string log, int charLimit) {
-            if (log.Length > charLimit) {
+            if (log.Length > charLimit && charLimit > 0) {
                 string[] logLines = log.ToString().Split("\n");
                 int len = logLines.Length;
                 int limit = len % 2 == 1 ? len - 1 : len;
@@ -88,17 +99,20 @@ namespace InputTracker {
             return log;
         }
 
-        public static string ShrinkTitle(string title, int charLimit) {
-            return title.Length > charLimit ?
+        /* Shrinks application title to specified char limit */
+        public static string ShrinkApplicationTitle(string title, int charLimit) {
+            return title.Length > charLimit && charLimit > 4 ?
                 $"{title.Substring(0, charLimit - 4).Trim()} ..." : title;
         }
 
+        /* Removes unnecessary path from filename and 
+         * retrieves only the actual name of the file */
         public static string RemovePath(string filename) {
-            int slashIdx = filename.LastIndexOf('\\') + 1;
-            int dotIdx = filename.LastIndexOf('.');
+            int slashIndex = filename.LastIndexOf('\\') + 1;
+            int dotIndex = filename.LastIndexOf('.');
 
-            if (slashIdx >= 0 && dotIdx > slashIdx && dotIdx < filename.Length) {
-                return filename.Substring(slashIdx, dotIdx - slashIdx);
+            if (slashIndex >= 0 && dotIndex > slashIndex && dotIndex < filename.Length) {
+                return filename.Substring(slashIndex, dotIndex - slashIndex);
             } else return filename;
         }
     }

@@ -58,8 +58,11 @@ namespace InputTracker {
             get { return _mouseMonitor.Count(); }
         }
 
-        public static bool Equals(ApplicationInput a, ApplicationInput b) {
-            return a.Date == b.Date;
+        public override bool Equals(object obj) {
+            var input = obj as ApplicationInput;
+            if (input == null) return false;
+
+            return this.Date.Equals(input.Date);
         }
     }
 }

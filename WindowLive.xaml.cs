@@ -172,7 +172,7 @@ namespace InputTracker {
             _appMonitor.Add(input);
 
             // Update database
-            WindowMain.UpdateDatabase();
+            WindowMain.UpdateDatabaseAsync();
 
             // Update last application's title
             _lastAppTitle = e.ApplicationTitle;
@@ -189,10 +189,6 @@ namespace InputTracker {
             textBox_Log.Text = _log.ToString();
 
             textBlock_Entries.Text = StringUtils.FormatCount(++_entries);
-        }
-
-        public ApplicationInput TryGetLastApplication() {
-            return null;
         }
     }
 }

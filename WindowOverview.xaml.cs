@@ -34,7 +34,7 @@ namespace InputTracker {
         }
 
         private void _OnDatabasePanelClicked(object sender, MouseButtonEventArgs e) {
-            WindowMain.UpdateDatabase();
+            WindowMain.UpdateDatabaseAsync();
         }
 
         private void _InitializeStatistics() {
@@ -106,23 +106,23 @@ namespace InputTracker {
             int count = _applications.Count;
 
             if (count > 0) {
-                textBlock_1st_Application.Text = StringUtils.ShrinkTitle(_applications[0].Title, _maxTitleLength);
+                textBlock_1st_Application.Text = StringUtils.ShrinkApplicationTitle(_applications[0].Title, _maxTitleLength);
                 textBlock_1st_KeyStrokes.Text = StringUtils.FormatCount(_applications[0].KeyStrokes);
                 textBlock_1st_MouseClicks.Text = StringUtils.FormatCount(_applications[0].MouseClicks);
                 if (count > 1) {
-                    textBlock_2nd_Application.Text = StringUtils.ShrinkTitle(_applications[1].Title, _maxTitleLength);
+                    textBlock_2nd_Application.Text = StringUtils.ShrinkApplicationTitle(_applications[1].Title, _maxTitleLength);
                     textBlock_2nd_KeyStrokes.Text = StringUtils.FormatCount(_applications[1].KeyStrokes);
                     textBlock_2nd_MouseClicks.Text = StringUtils.FormatCount(_applications[1].MouseClicks);
                     if (count > 2) {
-                        textBlock_3rd_Application.Text = StringUtils.ShrinkTitle(_applications[2].Title, _maxTitleLength);
+                        textBlock_3rd_Application.Text = StringUtils.ShrinkApplicationTitle(_applications[2].Title, _maxTitleLength);
                         textBlock_3rd_KeyStrokes.Text = StringUtils.FormatCount(_applications[2].KeyStrokes);
                         textBlock_3rd_MouseClicks.Text = StringUtils.FormatCount(_applications[2].MouseClicks);
                         if (count > 3) {
-                            textBlock_4th_Application.Text = StringUtils.ShrinkTitle(_applications[3].Title, _maxTitleLength);
+                            textBlock_4th_Application.Text = StringUtils.ShrinkApplicationTitle(_applications[3].Title, _maxTitleLength);
                             textBlock_4th_KeyStrokes.Text = StringUtils.FormatCount(_applications[3].KeyStrokes);
                             textBlock_4th_MouseClicks.Text = StringUtils.FormatCount(_applications[3].MouseClicks);
                             if (count > 4) {
-                                textBlock_5th_Application.Text = StringUtils.ShrinkTitle(_applications[4].Title, _maxTitleLength);
+                                textBlock_5th_Application.Text = StringUtils.ShrinkApplicationTitle(_applications[4].Title, _maxTitleLength);
                                 textBlock_5th_KeyStrokes.Text = StringUtils.FormatCount(_applications[4].KeyStrokes);
                                 textBlock_5th_MouseClicks.Text = StringUtils.FormatCount(_applications[4].MouseClicks);
                             }

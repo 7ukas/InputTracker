@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>logo.ico</ApplicationIcon>
     <StartupObject></StartupObject>
@@ -10,7 +10,6 @@
     <Product>Input Tracker</Product>
     <PackageId>Input Tracker</PackageId>
     <Company></Company>
-    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <Description>Input Tracker</Description>
     <PackageIcon>logo.png</PackageIcon>
@@ -54,6 +53,7 @@
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Dragablz" Version="0.0.3.223" />
     <PackageReference Include="MaterialDesignColors" Version="2.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
     <PackageReference Include="ModernUI.WPF" Version="1.0.9" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
