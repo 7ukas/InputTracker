@@ -118,8 +118,13 @@ public partial class WindowLive : UserControl {
     }
 
     private void _Listener_OnKeyPressed(object sender, KeyPressedArgs e) {
-        if (toggleButton_Tracking.IsChecked == false || 
-            !App.KeyboardKeys.ContainsKey(e.KeyPressed)) {
+        /* Exit event if:
+         * - Tracking is off
+         * - Database available keys table doesn't contain given key 
+         * - Any of modifier keys being held */
+        if (toggleButton_Tracking.IsChecked == false ||
+            !App.KeyboardKeys.ContainsKey(e.KeyPressed) ||
+            _AnyModifierKeysHeld(e)) {
             return;
         }
            
@@ -134,7 +139,7 @@ public partial class WindowLive : UserControl {
         image_Keyboard.RaiseEvent(args);
 
         // Add pressed key
-        _keyMonitor.Add(new KeyInput(e.KeyPressed, e.Modifiers));
+        _keyMonitor.Add(new KeyInput(e.KeyPressed, e.ToggleKeys, e.ModifierKeys));
 
         textBox_Live.Text += comboBoxItem_Regular.IsSelected ? 
             _keyMonitor.LastRegularText : _keyMonitor.LastRawText;
@@ -183,5 +188,24 @@ public partial class WindowLive : UserControl {
         textBox_Log.Text = _log.ToString();
 
         textBlock_Entries.Text = StringUtils.FormatCount(++_entries);
+    }
+
+    private bool _AnyModifierKeysHeld(KeyPressedArgs e) {
+        Key[] modifierKeys = { 
+            Key.LeftShift, Key.RightShift, 
+            Key.LeftAlt, Key.RightAlt, 
+            Key.LeftCtrl, Key.RightCtrl 
+        };
+        Key key = e.KeyPressed;
+        
+        return modifierKeys.Any(m => {
+            if (key.Equals(m)) {
+                bool modifierOn = false;
+                string keyName = m.ToString().Replace("Left", "").Replace("Right", "");
+
+                e.ModifierKeys.TryGetValue(keyName, out modifierOn);
+                return modifierOn;
+            } else return false;
+        });
     }
 }

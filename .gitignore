@@ -4,3 +4,10 @@ bin/Debug/net6.0-windows/database/InputTrackerDatabase.sqlite-journal
 bin/Debug/net6.0-windows/database/InputTrackerDatabase.sqlite
 *.sqlite
 bin/Debug/net6.0-windows/database/InputTrackerDatabase.sqlite
+bin/Debug/net6.0-windows/database/InputTrackerDatabase.sqlite
+bin/Debug/net6.0-windows/InputTracker.dll
+bin/Debug/net6.0-windows/InputTracker.pdb
+obj/Debug/net6.0-windows/InputTracker.dll
+obj/Debug/net6.0-windows/InputTracker.pdb
+obj/Debug/net6.0-windows/ref/InputTracker.dll
+obj/Debug/net6.0-windows/refint/InputTracker.dll
