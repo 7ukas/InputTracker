@@ -1,73 +1,69 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿namespace InputTracker; 
 
-namespace InputTracker {
-    public class ApplicationMonitor : IMonitor<ApplicationInput> {
-        private List<ApplicationInput> _inputs;
+internal class ApplicationMonitor : IMonitor<ApplicationInput> {
+    private List<ApplicationInput> _inputs;
 
-        public ApplicationMonitor() {
-            _inputs = new List<ApplicationInput>();
+    public ApplicationMonitor() {
+        _inputs = new List<ApplicationInput>();
+    }
+
+    public string LastRawLog {
+        get {
+            ApplicationInput last = _inputs.Last();
+
+            return $"[{last.Date} | {last.WindowTitle} ({last.Title})]:\n" +
+                (last.RawText.Length > 0 ? last.RawText + "\n" : "") + "\n";
         }
+    }
 
-        public string LastRawLog {
-            get {
-                ApplicationInput last = _inputs.Last();
+    public string AllRawLog {
+        get {
+            StringBuilder log = new StringBuilder();
 
-                return $"[{last.Date} | {last.WindowTitle} ({last.Title})]:\n" +
-                    (last.RawText.Length > 0 ? last.RawText + "\n" : "") + "\n";
+            foreach (ApplicationInput input in _inputs) {
+                log.Append($"[{input.Date} | {input.WindowTitle} ({input.Title})]:\n")
+                .Append(input.RawText.Length > 0 ? $"{input.RawText}\n\n" : "\n");
             }
+
+            return log.ToString();
         }
+    }
 
-        public string AllRawLog {
-            get {
-                StringBuilder log = new StringBuilder();
+    public string LastRegularLog {
+        get {
+            ApplicationInput last = _inputs.Last();
 
-                foreach (ApplicationInput input in _inputs) {
-                    log.Append($"[{input.Date} | {input.WindowTitle} ({input.Title})]:\n")
-                    .Append(input.RawText.Length > 0 ? $"{input.RawText}\n\n" : "\n");
-                }
+            return $"[{last.Date} | {last.WindowTitle} ({last.Title})]:\n" +
+                (last.RegularText.Length > 0 ? last.RegularText + "\n" : "") + "\n";
+        }
+    }
 
-                return log.ToString();
+    public string AllRegularLog {
+        get {
+            StringBuilder log = new StringBuilder();
+
+            foreach (ApplicationInput input in _inputs) {
+                log.Append($"[{input.Date} | {input.WindowTitle} ({input.Title})]:\n")
+                .Append(input.RegularText.Length > 0 ? $"{input.RegularText}\n\n" : "\n");
             }
+
+            return log.ToString();
         }
+    }
 
-        public string LastRegularLog {
-            get {
-                ApplicationInput last = _inputs.Last();
+    public void Add(ApplicationInput input) {
+        _inputs.Add(input);
+    }
 
-                return $"[{last.Date} | {last.WindowTitle} ({last.Title})]:\n" +
-                    (last.RegularText.Length > 0 ? last.RegularText + "\n" : "") + "\n";
-            }
-        }
+    public void Clear() {
+        _inputs.Clear();
+    }
 
-        public string AllRegularLog {
-            get {
-                StringBuilder log = new StringBuilder();
+    public int Count() {
+        return _inputs.Count();
+    }
 
-                foreach (ApplicationInput input in _inputs) {
-                    log.Append($"[{input.Date} | {input.WindowTitle} ({input.Title})]:\n")
-                    .Append(input.RegularText.Length > 0 ? $"{input.RegularText}\n\n" : "\n");
-                }
-
-                return log.ToString();
-            }
-        }
-
-        public void Add(ApplicationInput input) {
-            _inputs.Add(input);
-        }
-
-        public void Clear() {
-            _inputs.Clear();
-        }
-
-        public int Count() {
-            return _inputs.Count();
-        }
-
-        public void Remove(ApplicationInput input) {
-            _inputs.Remove(input);
-        }
+    public void Remove(ApplicationInput input) {
+        _inputs.Remove(input);
     }
 }
