@@ -43,9 +43,15 @@ internal class InputDeviceListener {
     // Data
     private List<Key> _keys;
     private List<MouseButton> _buttons;
-    private List<Dictionary<string, bool>> _modifiers;
-    Dictionary<string, bool> _modifiersMap = new Dictionary<string, bool>{
-            {"Shift", false}, {"CapsLock", false}
+
+    private List<Dictionary<string, bool>> _modifierDictionaries;
+    private Dictionary<string, bool> _modifierKeys = new Dictionary<string, bool>{
+            {"Shift", false}, {"Alt", false}, {"Ctrl", false}
+    };
+
+    private List<Dictionary<string, bool>> _toggleDictionaries;
+    private Dictionary<string, bool> _toggleKeys = new Dictionary<string, bool>{
+            {"CapsLock", false}, {"NumLock", false}, {"ScrollLock", false}
     };
 
     // Delegates: keyboard/mouse callbacks
@@ -63,7 +69,9 @@ internal class InputDeviceListener {
 
         _keys = new List<Key>();
         _buttons = new List<MouseButton>();
-        _modifiers = new List<Dictionary<string, bool>>();
+
+        _modifierDictionaries = new List<Dictionary<string, bool>>();
+        _toggleDictionaries = new List<Dictionary<string, bool>>();
     }
 
     ~InputDeviceListener() {
@@ -92,13 +100,20 @@ internal class InputDeviceListener {
         if (nCode >= 0 && _WMKeys.Contains(wParam)) {
             Key virtualKey = KeyInterop.KeyFromVirtualKey(Marshal.ReadInt32(lParam));
 
-            _modifiersMap["Shift"] = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift);
-            _modifiersMap["CapsLock"] = Keyboard.IsKeyToggled(Key.CapsLock);
+            // Setting status for toggle and modifiers keys
+            _toggleKeys["CapsLock"] = Keyboard.IsKeyToggled(Key.CapsLock);
+            _toggleKeys["NumLock"] = Keyboard.IsKeyToggled(Key.NumLock);
+            _toggleKeys["ScrollLock"] = Keyboard.IsKeyToggled(Key.Scroll);
 
-            OnKeyPressed?.Invoke(this, new KeyPressedArgs(virtualKey, _modifiersMap));
+            _modifierKeys["Shift"] = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift);
+            _modifierKeys["Alt"] = Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt);
+            _modifierKeys["Ctrl"] = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+
+            OnKeyPressed?.Invoke(this, new KeyPressedArgs(virtualKey, _toggleKeys, _modifierKeys));
 
             _keys.Add(virtualKey);
-            _modifiers.Add(new Dictionary<string, bool>(_modifiersMap));
+            _toggleDictionaries.Add(new Dictionary<string, bool>(_toggleKeys));
+            _modifierDictionaries.Add(new Dictionary<string, bool>(_modifierKeys));
         }
 
         return CallNextHookEx(_keyboardHook, nCode, wParam, lParam);

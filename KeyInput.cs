@@ -2,21 +2,23 @@
 
 internal class KeyInput {
     private Key _key = 0;
-    private Dictionary<string, bool> _modifiers;
+    private Dictionary<string, bool> _toggleKeys;
+    private Dictionary<string, bool> _modifierKeys;
     private string _rawText;
     private string _regularText;
 
-    public KeyInput(Key key, Dictionary<string, bool> modifiers) {
+    public KeyInput(Key key, Dictionary<string, bool> toggleKeys, Dictionary<string, bool> modifierKeys) {
         if (App.KeyboardKeys.ContainsKey(key)) {
             _key = key;
         }
 
-        _modifiers = new Dictionary<string, bool>(modifiers);
+        _toggleKeys = new Dictionary<string, bool>(toggleKeys);
+        _modifierKeys = new Dictionary<string, bool>(modifierKeys);
 
         _rawText = App.KeyboardKeys[_key].RawText;
         _regularText = App.KeyboardKeys[_key].RegularText;
         
-        // Adjust regular text depending on Shift/CapsLock status
+        // Adjust regular text case depending on Shift/CapsLock status
         if (_regularText.Length > 0) {
             bool keyIsLetter = _regularText.Length == 1 && char.IsLetter(_regularText[0]);
 
@@ -47,19 +49,19 @@ internal class KeyInput {
 
     private bool _IsShiftDown {
         get {
-            bool value = false;
-            _modifiers.TryGetValue("Shift", out value);
+            bool shiftOn = false;
+            _modifierKeys.TryGetValue("Shift", out shiftOn);
 
-            return value;
+            return shiftOn;
         }
     }
 
     private bool _IsCapsLockToggled {
         get {
-            bool value = false;
-            _modifiers.TryGetValue("CapsLock", out value);
+            bool capsLockOn = false;
+            _toggleKeys.TryGetValue("CapsLock", out capsLockOn);
 
-            return value;
+            return capsLockOn;
         }
     }
 }
