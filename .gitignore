@@ -1,0 +1,6 @@
+
+bin/Debug/net6.0-windows/database/InputTrackerDatabase.sqlite
+bin/Debug/net6.0-windows/database/InputTrackerDatabase.sqlite-journal
+bin/Debug/net6.0-windows/database/InputTrackerDatabase.sqlite
+*.sqlite
+bin/Debug/net6.0-windows/database/InputTrackerDatabase.sqlite

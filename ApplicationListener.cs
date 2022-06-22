@@ -1,75 +1,71 @@
-﻿using System;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
+﻿namespace InputTracker; 
 
-namespace InputTracker {
-    public class ApplicationListener {
-        /* Sets an event hook function for a range of events */
-        [DllImport("user32.dll")]
-        private static extern IntPtr SetWinEventHook(uint eventMin, uint eventMax, IntPtr hmodWinEventProc, _WinEventDelegate lpfnWinEventProc, uint idProcess, uint idThread, uint dwFlags);
+internal class ApplicationListener {
+    /* Sets an event hook function for a range of events */
+    [DllImport("user32.dll")]
+    private static extern IntPtr SetWinEventHook(uint eventMin, uint eventMax, IntPtr hmodWinEventProc, _WinEventDelegate lpfnWinEventProc, uint idProcess, uint idThread, uint dwFlags);
 
-        /* Discards current hook */
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern bool UnhookWindowsHookEx(IntPtr hhk);
+    /* Discards current hook */
+    [DllImport("user32.dll", SetLastError = true)]
+    private static extern bool UnhookWindowsHookEx(IntPtr hhk);
 
-        /* Retrieves the window with which the user is currently working */
-        [DllImport("user32.dll")]
-        private static extern IntPtr GetForegroundWindow();
+    /* Retrieves the window with which the user is currently working */
+    [DllImport("user32.dll")]
+    private static extern IntPtr GetForegroundWindow();
 
-        /* Retrieves the id of the thread that created the specified window */
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+    /* Retrieves the id of the thread that created the specified window */
+    [DllImport("user32.dll", SetLastError = true)]
+    private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
 
-        // Flags
-        private const uint WinEventOutOfContext = 0;
-        private const uint EventSystemForeground = 3; // The foreground window has changed. 
+    // Flags
+    private const uint WinEventOutOfContext = 0;
+    private const uint EventSystemForeground = 3; // The foreground window has changed. 
 
-        public ApplicationListener() { }
+    public ApplicationListener() { }
 
-        ~ApplicationListener() {
-            UnhookWindowsHookEx(IntPtr.Zero);
-        }
+    ~ApplicationListener() {
+        UnhookWindowsHookEx(IntPtr.Zero);
+    }
 
-        // Delegate: callback function
-        // Event Handler: application changed
-        private delegate void _WinEventDelegate(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime);
-        private _WinEventDelegate _winEvent;
-        public event EventHandler<ApplicationChangedArgs> OnApplicationChanged;
+    // Delegate: callback function
+    // Event Handler: application changed
+    private delegate void _WinEventDelegate(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime);
+    private _WinEventDelegate _winEvent;
+    public event EventHandler<ApplicationChangedArgs> OnApplicationChanged;
 
-        public void HookApplication() {
-            _winEvent = new _WinEventDelegate(WinEventProc);
-            SetWinEventHook(EventSystemForeground, EventSystemForeground, IntPtr.Zero, _winEvent, 0, 0, WinEventOutOfContext);
-        }
+    public void HookApplication() {
+        _winEvent = new _WinEventDelegate(WinEventProc);
+        SetWinEventHook(EventSystemForeground, EventSystemForeground, IntPtr.Zero, _winEvent, 0, 0, WinEventOutOfContext);
+    }
 
-        // Callback function
-        private void WinEventProc(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime) {
-            uint procId = 0;
+    // Callback function
+    private void WinEventProc(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime) {
+        uint procId = 0;
 
-            GetWindowThreadProcessId(GetForegroundWindow(), out procId);
-            Process process = Process.GetProcessById((int)procId);
+        GetWindowThreadProcessId(GetForegroundWindow(), out procId);
+        Process process = Process.GetProcessById((int)procId);
 
-            // Window title
-            string windowTitle = !string.IsNullOrEmpty(process.MainWindowTitle) ?
-                process.MainWindowTitle : "NOT DEFINED";
+        // Window title
+        string windowTitle = !string.IsNullOrEmpty(process.MainWindowTitle) ?
+            process.MainWindowTitle : "NOT DEFINED";
 
-            // Application title
-            ProcessModule module = null;
-            string applicationTitle = "";
+        // Application title
+        ProcessModule module = null;
+        string applicationTitle = "";
 
-            try {
-                module = process.MainModule;
-                string fileDescription = module.FileVersionInfo.FileDescription;
+        try {
+            module = process.MainModule;
+            string fileDescription = module.FileVersionInfo.FileDescription;
 
-                applicationTitle = !string.IsNullOrEmpty(fileDescription) ?
-                fileDescription : StringUtils.RemovePath(module.FileVersionInfo.FileName);
-            } catch (Exception e) {
-            } finally {
-                if (string.IsNullOrEmpty(applicationTitle)) {
-                    applicationTitle = "NOT DEFINED";
-                }
+            applicationTitle = !string.IsNullOrEmpty(fileDescription) ?
+            fileDescription : StringUtils.RemovePath(module.FileVersionInfo.FileName);
+        } catch (Exception) {
+        } finally {
+            if (string.IsNullOrEmpty(applicationTitle)) {
+                applicationTitle = "NOT DEFINED";
             }
-
-            OnApplicationChanged?.Invoke(this, new ApplicationChangedArgs(applicationTitle, windowTitle));
         }
+
+        OnApplicationChanged?.Invoke(this, new ApplicationChangedArgs(applicationTitle, windowTitle));
     }
 }

@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Input;
-using System.Linq;
-
-namespace InputTracker {
+﻿namespace InputTracker {
     public partial class App : Application {
-        public static LiveSettings LiveSettings = new LiveSettings();
-        public static DatabaseSettings DatabaseSettings = new DatabaseSettings();
+        internal static LiveSettings LiveSettings = new LiveSettings();
+        internal static DatabaseSettings DatabaseSettings = new DatabaseSettings();
 
         // Keys cache for frequent use
-        public static Dictionary<Key, DBKeyboardKey> KeyboardKeys =
+        internal static Dictionary<Key, DBKeyboardKey> KeyboardKeys =
             DatabaseController.GetKeyboardKeys()
             .ToDictionary(x => x.KeyboardKey, x => x);
     }
 
-    public class LiveSettings {
+    internal class LiveSettings {
         public bool IsTracking { get; set; }
         public string Style { get; set; }
 
@@ -25,7 +19,7 @@ namespace InputTracker {
         }
     }
 
-    public class DatabaseSettings {
+    internal class DatabaseSettings {
         public DateTime StartDate { get; set; }
         public string StartTime { get; set; }
         public DateTime EndDate { get; set; }
