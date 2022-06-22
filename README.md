@@ -15,7 +15,7 @@ With the help of SQLite, data is stored in to locally based database (located: b
 
 # Menu
 ### Overview
-![](https://i.imgur.com/oxaHT6u.png) 
+![](https://imgur.com/gjWO4XV.png)
 * Amount of unique applications, keyboard keys and mouse buttons pressed over certain period of time.
 * Most active applications ordered by keys/buttons amounts.
 * Last time database was updated with new records (can also update manually).
@@ -29,7 +29,7 @@ With the help of SQLite, data is stored in to locally based database (located: b
 * Keyboard and Mouse icons to notify once press or click happens.
 
 ### History
-![](https://i.imgur.com/MDvupJz.png)
+![](https://imgur.com/9NAhKuW.png)
 * Calendar to choose in what time frame data should be displayed.
 * Content options to choose what columns of data to display/hide also includes options for empty (key-less) records and maximum number of lines.
 * Data table of used applications and data collected within them such as it's process and window names, text, key strokes, mouse clicks.
