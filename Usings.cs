@@ -19,3 +19,8 @@ global using System.Windows.Interop;
 global using System.Windows.Media;
 global using System.Windows.Media.Imaging;
 global using System.Windows.Threading;
+
+global using PropertyChanged;
+global using System.ComponentModel;
+global using System.Collections.ObjectModel;
+global using System.Windows.Data;

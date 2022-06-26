@@ -7,50 +7,47 @@ internal sealed class FileGenerator {
         _inputs = new List<DBInput>(inputs);
     }
 
-    public void GenerateCsv(bool applicationCol, bool windowCol, bool rawTextCol, bool regularTextCol, bool keyStrokesCol, bool mouseClicksCol) {
+    public void GenerateCsv(bool application, bool window, bool regularText, bool rawText, bool keyStrokes, bool mouseClicks) {
         StringBuilder csv = new StringBuilder();
 
-        string date = "Date,";
-        string application = applicationCol ? "Application," : "";
-        string window = windowCol ? "Window," : "";
-        string rawText = rawTextCol ? "Raw text," : "";
-        string regularText = regularTextCol ? "Regular text," : "";
-        string keyStrokes = keyStrokesCol ? "Key strokes," : "";
-        string mouseClicks = mouseClicksCol ? "Mouse clicks," : "";
+        if (application) csv.Append("Application,");
+        if (window) csv.Append("Window,");
+        if (regularText) csv.Append("Regular Text,");
+        if (rawText) csv.Append("Raw Text,");
+        if (keyStrokes) csv.Append("Key Strokes,");
+        if (mouseClicks) csv.Append("Mouse Clicks,");
 
-        string line = $"{date}{application}{window}{rawText}{regularText}{keyStrokes}{mouseClicks}";
-        csv.AppendLine(line.Substring(0, line.Length - 1));
+        csv.Remove(csv.Length - 1, 1);
+        csv.AppendLine();
 
         foreach (DBInput input in _inputs) {
-            date = $"{input.Date},";
-            application = applicationCol ? $"{input.Application}," : "";
-            window = windowCol ? $"{input.Window}," : "";
-            rawText = rawTextCol ? $"{input.RawText}," : "";
-            regularText = regularTextCol ? $"{input.RegularText}," : "";
-            keyStrokes = keyStrokesCol ? $"{input.KeyStrokes}," : "";
-            mouseClicks = mouseClicksCol ? $"{input.MouseClicks}," : "";
+            if (application) csv.Append($"{input.Application},");
+            if (window) csv.Append($"{input.Window},");
+            if (regularText) csv.Append($"{input.RegularText},");
+            if (rawText) csv.Append($"{input.RawText},");
+            if (keyStrokes) csv.Append($"{input.KeyStrokes},");
+            if (mouseClicks) csv.Append($"{input.MouseClicks},");
 
-            line = $"{date}{application}{window}{rawText}{regularText}{keyStrokes}{mouseClicks}";
-            csv.AppendLine(line.Substring(0, line.Length - 1));
+            csv.Remove(csv.Length - 1, 1);
+            csv.AppendLine();
         }
 
         _SaveFile(csv.ToString(), "csv");
     }
 
-    public void GenerateTxt(bool applicationCol, bool windowCol, bool rawTextCol, bool regularTextCol, bool keyStrokesCol, bool mouseClicksCol) {
+    public void GenerateTxt(bool application, bool window, bool regularText, bool rawText, bool keyStrokes, bool mouseClicks) {
         StringBuilder txt = new StringBuilder();
 
         foreach (DBInput input in _inputs) {
-            string date = $"Date: {input.Date}    ";
-            string application = applicationCol ? $"Application: {input.Application}    " : "";
-            string window = windowCol ? $"Window: {input.Window}    " : "";
-            string rawText = rawTextCol ? $"Raw Text: {input.RawText}    " : "";
-            string regularText = regularTextCol ? $"Regular text: {input.RegularText}    " : "";
-            string keyStrokes = keyStrokesCol ? $"Key strokes: {input.KeyStrokes}    " : "";
-            string mouseClicks = mouseClicksCol ? $"MouseClicks: {input.MouseClicks}    " : "";
+            if (application) txt.Append($"Application: {input.Application},    ");
+            if (window) txt.Append($"Window: {input.Window},    ");
+            if (regularText) txt.Append($"Regular Text: {input.RegularText},    ");
+            if (rawText) txt.Append($"Raw Text: {input.RawText},    ");
+            if (keyStrokes) txt.Append($"Key Strokes: {input.KeyStrokes},    ");
+            if (mouseClicks) txt.Append($"Mouse Clicks: {input.MouseClicks},    ");
 
-            string line = $"{date}{application}{window}{rawText}{regularText}{keyStrokes}{mouseClicks}";
-            txt.AppendLine(line.Substring(0, line.Length - 1));
+            txt.Remove(txt.Length - 1, 1);
+            txt.AppendLine();
         }
 
         _SaveFile(txt.ToString(), "txt");

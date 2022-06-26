@@ -20,6 +20,12 @@
           "lib/netcoreapp3.0/Dragablz.dll": {}
         }
       },
+      "Fody/6.6.3": {
+        "type": "package",
+        "build": {
+          "build/Fody.targets": {}
+        }
+      },
       "MaterialDesignColors/2.0.5": {
         "type": "package",
         "compile": {
@@ -221,6 +227,18 @@
           }
         }
       },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.39": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "ModernUI.WPF/1.0.9": {
         "type": "package",
         "compile": {
@@ -228,6 +246,21 @@
         },
         "runtime": {
           "lib/net45/FirstFloor.ModernUI.dll": {}
+        }
+      },
+      "PropertyChanged.Fody/3.4.1": {
+        "type": "package",
+        "dependencies": {
+          "Fody": "6.6.2"
+        },
+        "compile": {
+          "lib/netstandard2.1/PropertyChanged.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/PropertyChanged.dll": {}
+        },
+        "build": {
+          "build/PropertyChanged.Fody.props": {}
         }
       },
       "runtime.native.System.Data.SqlClient.sni/4.7.0": {
@@ -817,6 +850,39 @@
         "src/netcoreapp3.0/obj/Release/netcoreapp3.0/GeneratedInternalTypeHelper.g.cs"
       ]
     },
+    "Fody/6.6.3": {
+      "sha512": "X1WKKgSNYVtLzdO8dK3YWmfmljA4L0soePcWNouq9X6WbVF4bmivuJdlhTZx/2L3ml6tMvhFe8skIbVQ24PAYA==",
+      "type": "package",
+      "path": "fody/6.6.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "License.txt",
+        "build/Fody.targets",
+        "fody.6.6.3.nupkg.sha512",
+        "fody.nuspec",
+        "netclassictask/Fody.dll",
+        "netclassictask/FodyCommon.dll",
+        "netclassictask/FodyHelpers.dll",
+        "netclassictask/FodyIsolated.dll",
+        "netclassictask/Mono.Cecil.Pdb.dll",
+        "netclassictask/Mono.Cecil.Pdb.pdb",
+        "netclassictask/Mono.Cecil.Rocks.dll",
+        "netclassictask/Mono.Cecil.Rocks.pdb",
+        "netclassictask/Mono.Cecil.dll",
+        "netclassictask/Mono.Cecil.pdb",
+        "netstandardtask/Fody.dll",
+        "netstandardtask/FodyCommon.dll",
+        "netstandardtask/FodyHelpers.dll",
+        "netstandardtask/FodyIsolated.dll",
+        "netstandardtask/Mono.Cecil.Pdb.dll",
+        "netstandardtask/Mono.Cecil.Pdb.pdb",
+        "netstandardtask/Mono.Cecil.Rocks.dll",
+        "netstandardtask/Mono.Cecil.Rocks.pdb",
+        "netstandardtask/Mono.Cecil.dll",
+        "netstandardtask/Mono.Cecil.pdb"
+      ]
+    },
     "MaterialDesignColors/2.0.5": {
       "sha512": "y5gEo4wo46CTiaTOiROPoKqTW5LJAu0g6b+yd0MslS3Fppu6hMheOIIkrmvvpFPbC4jbgAwakYYCzPKWbHC4LQ==",
       "type": "package",
@@ -1159,6 +1225,31 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.39": {
+      "sha512": "8PZKqw9QOcu42xk8puY4P1+EXHL9YGOR9b7qhaYx5cILHul456H073tj99vyPcCt0W0781T9RwHqkx507ZyUpQ==",
+      "type": "package",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.39",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Design/Microsoft.Xaml.Behaviors.Design.dll",
+        "lib/net45/Microsoft.Xaml.Behaviors.dll",
+        "lib/net45/Microsoft.Xaml.Behaviors.pdb",
+        "lib/net45/Microsoft.Xaml.Behaviors.xml",
+        "lib/net5.0-windows7.0/Design/Microsoft.Xaml.Behaviors.DesignTools.dll",
+        "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.dll",
+        "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.pdb",
+        "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.xml",
+        "lib/netcoreapp3.1/Design/Microsoft.Xaml.Behaviors.DesignTools.dll",
+        "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.dll",
+        "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.pdb",
+        "lib/netcoreapp3.1/Microsoft.Xaml.Behaviors.xml",
+        "microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512",
+        "microsoft.xaml.behaviors.wpf.nuspec",
+        "tools/Install.ps1"
+      ]
+    },
     "ModernUI.WPF/1.0.9": {
       "sha512": "50YFAwTzodJ7PXi/O7aQuElJ2SVAHh9WNpsXK/Z/iQUvtAHqjOzaATOzP4vuQUFlwdksgML9s151kI59qIfyDw==",
       "type": "package",
@@ -1173,6 +1264,28 @@
         "lib/net45/FirstFloor.ModernUI.dll",
         "modernui.wpf.1.0.9.nupkg.sha512",
         "modernui.wpf.nuspec"
+      ]
+    },
+    "PropertyChanged.Fody/3.4.1": {
+      "sha512": "e0BVdf9bFdjvOMEcYff5jUdvMC36ioHN1Lp7bW1bz0Qjg3rqsfCUhaaIu+K7R9TKBGeX7PlfqAeMqKyrD9cBXw==",
+      "type": "package",
+      "path": "propertychanged.fody/3.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/PropertyChanged.Fody.props",
+        "lib/net40/PropertyChanged.dll",
+        "lib/net40/PropertyChanged.xml",
+        "lib/netstandard1.0/PropertyChanged.dll",
+        "lib/netstandard1.0/PropertyChanged.xml",
+        "lib/netstandard2.0/PropertyChanged.dll",
+        "lib/netstandard2.0/PropertyChanged.xml",
+        "lib/netstandard2.1/PropertyChanged.dll",
+        "lib/netstandard2.1/PropertyChanged.xml",
+        "propertychanged.fody.3.4.1.nupkg.sha512",
+        "propertychanged.fody.nuspec",
+        "weaver/PropertyChanged.Fody.dll",
+        "weaver/PropertyChanged.Fody.xcf"
       ]
     },
     "runtime.native.System.Data.SqlClient.sni/4.7.0": {
@@ -1668,9 +1781,12 @@
     "net6.0-windows7.0": [
       "Dapper >= 2.0.123",
       "Dragablz >= 0.0.3.223",
+      "Fody >= 6.6.3",
       "MaterialDesignColors >= 2.0.5",
       "Microsoft.EntityFrameworkCore >= 6.0.6",
+      "Microsoft.Xaml.Behaviors.Wpf >= 1.1.39",
       "ModernUI.WPF >= 1.0.9",
+      "PropertyChanged.Fody >= 3.4.1",
       "System.Configuration.ConfigurationManager >= 6.0.0",
       "System.Data.SQLite.Core >= 1.0.115.5",
       "System.Data.SqlClient >= 4.8.3"
@@ -1723,6 +1839,12 @@
             "target": "Package",
             "version": "[0.0.3.223, )"
           },
+          "Fody": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[6.6.3, )"
+          },
           "MaterialDesignColors": {
             "target": "Package",
             "version": "[2.0.5, )"
@@ -1731,9 +1853,17 @@
             "target": "Package",
             "version": "[6.0.6, )"
           },
+          "Microsoft.Xaml.Behaviors.Wpf": {
+            "target": "Package",
+            "version": "[1.1.39, )"
+          },
           "ModernUI.WPF": {
             "target": "Package",
             "version": "[1.0.9, )"
+          },
+          "PropertyChanged.Fody": {
+            "target": "Package",
+            "version": "[3.4.1, )"
           },
           "System.Configuration.ConfigurationManager": {
             "target": "Package",

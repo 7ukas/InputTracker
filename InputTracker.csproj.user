@@ -10,7 +10,16 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="ImageDictionary.xaml">
+    <Page Update="Styles\Dragablz.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\ImageDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\MaterialDesign.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Triggers.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="WindowHistory.xaml">

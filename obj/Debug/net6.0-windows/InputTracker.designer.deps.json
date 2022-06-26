@@ -22,6 +22,7 @@
           }
         }
       },
+      "Fody/6.6.3": {},
       "MaterialDesignColors/2.0.5": {
         "runtime": {
           "lib/netcoreapp3.1/MaterialDesignColors.dll": {
@@ -190,11 +191,30 @@
           }
         }
       },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.39": {
+        "runtime": {
+          "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.39.4716"
+          }
+        }
+      },
       "ModernUI.WPF/1.0.9": {
         "runtime": {
           "lib/net45/FirstFloor.ModernUI.dll": {
             "assemblyVersion": "1.0.9.0",
             "fileVersion": "1.0.9.0"
+          }
+        }
+      },
+      "PropertyChanged.Fody/3.4.1": {
+        "dependencies": {
+          "Fody": "6.6.3"
+        },
+        "runtime": {
+          "lib/netstandard2.1/PropertyChanged.dll": {
+            "assemblyVersion": "3.4.1.0",
+            "fileVersion": "3.4.1.0"
           }
         }
       },
@@ -463,6 +483,13 @@
       "path": "dragablz/0.0.3.223",
       "hashPath": "dragablz.0.0.3.223.nupkg.sha512"
     },
+    "Fody/6.6.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-X1WKKgSNYVtLzdO8dK3YWmfmljA4L0soePcWNouq9X6WbVF4bmivuJdlhTZx/2L3ml6tMvhFe8skIbVQ24PAYA==",
+      "path": "fody/6.6.3",
+      "hashPath": "fody.6.6.3.nupkg.sha512"
+    },
     "MaterialDesignColors/2.0.5": {
       "type": "package",
       "serviceable": true,
@@ -561,12 +588,26 @@
       "path": "microsoft.win32.systemevents/6.0.0",
       "hashPath": "microsoft.win32.systemevents.6.0.0.nupkg.sha512"
     },
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.39": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8PZKqw9QOcu42xk8puY4P1+EXHL9YGOR9b7qhaYx5cILHul456H073tj99vyPcCt0W0781T9RwHqkx507ZyUpQ==",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.39",
+      "hashPath": "microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+    },
     "ModernUI.WPF/1.0.9": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-50YFAwTzodJ7PXi/O7aQuElJ2SVAHh9WNpsXK/Z/iQUvtAHqjOzaATOzP4vuQUFlwdksgML9s151kI59qIfyDw==",
       "path": "modernui.wpf/1.0.9",
       "hashPath": "modernui.wpf.1.0.9.nupkg.sha512"
+    },
+    "PropertyChanged.Fody/3.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e0BVdf9bFdjvOMEcYff5jUdvMC36ioHN1Lp7bW1bz0Qjg3rqsfCUhaaIu+K7R9TKBGeX7PlfqAeMqKyrD9cBXw==",
+      "path": "propertychanged.fody/3.4.1",
+      "hashPath": "propertychanged.fody.3.4.1.nupkg.sha512"
     },
     "runtime.native.System.Data.SqlClient.sni/4.7.0": {
       "type": "package",

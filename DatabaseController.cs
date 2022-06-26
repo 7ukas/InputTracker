@@ -54,30 +54,34 @@ internal sealed class DatabaseController {
         }
     }
 
+    public async static void UpdateDatabaseAsync(ApplicationInput input) {
+        await Task.Run(() => { Update(input); });
+    }
+
     public static List<DBInput> GetInputs(DateTime start, DateTime end, int maxRows) {
         using (IDbConnection connection = GetConnection()) {
             string startStr = start.ToString("yyyy-MM-dd HH:mm:ss");
             string endStr = end.ToString("yyyy-MM-dd HH:mm:ss");
 
             return connection.Query<DBInput>(
-                $"SELECT I.Date AS Date, A.Application AS Application, I.Window AS Window, I.RawText AS RawText, " +
-                $"I.RegularText AS RegularText, I.KeyStrokes AS KeyStrokes, I.MouseClicks AS MouseClicks " +
+                $"SELECT I.Date AS Date, A.Application AS Application, I.Window AS Window, I.RegularText AS RegularText, " +
+                $"I.RawText AS RawText, I.KeyStrokes AS KeyStrokes, I.MouseClicks AS MouseClicks " +
                 $"FROM {InputsTable} I JOIN {ApplicationsTable} A ON I.ApplicationID = A.ID " +
                 $"WHERE Date BETWEEN '{startStr}' AND '{endStr}' LIMIT {maxRows}").ToList();
         }
     }
 
-    public static List<DBApplication> GetApplications() {
+    public static List<dbApplications> GetApplications() {
         using (IDbConnection connection = GetConnection()) {
-            return connection.Query<DBApplication>(
+            return connection.Query<dbApplications>(
                 $"SELECT Application AS Title, KeyStrokes, MouseClicks FROM {ApplicationsTable}").ToList();
         }
     }
 
-    public static List<DBKeyboardKey> GetKeyboardKeys() {
+    public static List<DBKeyInput> GetKeyboardKeys() {
         using (IDbConnection connection = GetConnection()) {
-            return connection.Query<DBKeyboardKey>(
-                $"SELECT ID AS KeyboardKey, RawText AS RawText, RegularText AS RegularText" +
+            return connection.Query<DBKeyInput>(
+                $"SELECT ID AS Key, RawText AS RawText, RegularText AS RegularText" +
                 $", ShiftText AS ShiftText FROM {KeyboardKeysTable}").ToList();
         }
     }

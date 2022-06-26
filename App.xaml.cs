@@ -2,11 +2,6 @@
     public partial class App : Application {
         internal static LiveSettings LiveSettings = new LiveSettings();
         internal static DatabaseSettings DatabaseSettings = new DatabaseSettings();
-
-        // Keys cache for frequent use
-        internal static Dictionary<Key, DBKeyboardKey> KeyboardKeys =
-            DatabaseController.GetKeyboardKeys()
-            .ToDictionary(x => x.KeyboardKey, x => x);
     }
 
     internal class LiveSettings {
