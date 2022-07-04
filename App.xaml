@@ -7,10 +7,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Triggers.xaml"/>
-                <ResourceDictionary Source="Styles/MaterialDesign.xaml"/>
                 <ResourceDictionary Source="Styles/ImageDictionary.xaml"/>
-                <ResourceDictionary Source="Styles/Dragablz.xaml"/>
+                <ResourceDictionary Source="Styles/StoryBoards.xaml"/>
+                <ResourceDictionary Source="Styles/Layouts.xaml"/>
+                <ResourceDictionary Source="Styles/Controls.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

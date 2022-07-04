@@ -10,16 +10,16 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Styles\Dragablz.xaml">
+    <Page Update="Styles\Controls.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\ImageDictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Styles\MaterialDesign.xaml">
+    <Page Update="Styles\Layouts.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Styles\Triggers.xaml">
+    <Page Update="Styles\StoryBoards.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="WindowHistory.xaml">

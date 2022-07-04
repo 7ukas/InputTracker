@@ -1,0 +1,92 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- TextBox - (Live - Log) -->
+    <Style TargetType="{x:Type TextBox}" x:Key="LogTextBoxStyle">
+        <Setter Property="Background" Value="#FAFDFF"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="#3498DB"/>
+    </Style>
+
+    <!-- Button - (Main - Tab Menu) -->
+    <Style TargetType="{x:Type ToggleButton}" x:Key="TabMenuButtonStyle">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="BorderBrush" Value="LightGray"/>
+        <Setter Property="BorderThickness" Value="0 0 0 4"/>
+        <Setter Property="Command" Value="{Binding DisplayWindowCommand}"/>
+        <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Self}, Path=Content}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="BorderBrush" Value="Lime"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                    <Grid Style="{StaticResource TabMenuGridStyle}">
+                        <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Opacity" To="0.75"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+
+            <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Opacity" To="1.00"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+    <!-- #3458DB-->
+    <Style TargetType="{x:Type ScrollBar}">
+        <Setter Property="MinWidth" Value="15"/>
+        <Setter Property="Width" Value="15"/>
+        <Setter Property="Background" Value="Transparent"/>
+        
+    </Style>
+
+
+    <Style TargetType="{x:Type RepeatButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border Background="Transparent">
+                        <Grid>
+                            <Path x:Name="Arrow" Width="12" Height="8" Data="M0,0 L12,0 L6,8z" Fill="Red"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Arrow" Property="Fill" Value="LightGreen"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Arrow" Property="Fill" Value="Orange"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
+    </Style>
+</ResourceDictionary>

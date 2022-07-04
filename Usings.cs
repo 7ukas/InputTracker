@@ -24,3 +24,4 @@ global using PropertyChanged;
 global using System.ComponentModel;
 global using System.Collections.ObjectModel;
 global using System.Windows.Data;
+global using System.Runtime.CompilerServices;

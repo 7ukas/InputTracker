@@ -95,22 +95,6 @@ internal sealed class StringUtils {
         return log;
     }
 
-    /* Shrinks application title to specified char limit */
-    public static string ShrinkApplicationTitle(string title, int charLimit) {
-        const int minChars = 4;
-        string shrinkedTitle = title;
-
-        if (charLimit >= 0) {
-            if (title.Length > charLimit && charLimit > minChars) {
-                shrinkedTitle = $"{title.Substring(0, charLimit - 4).Trim()} ...";
-            } else if (title.Length > charLimit && charLimit <= minChars) {
-                shrinkedTitle = title.Substring(0, charLimit);
-            }
-        }
-
-        return shrinkedTitle;
-    }
-
     /* Removes unnecessary path from filename and 
      * retrieves only the actual name of the file */
     public static string RemovePath(string filename) {

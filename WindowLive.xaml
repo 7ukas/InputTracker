@@ -4,16 +4,12 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:InputTracker">
 
-    <UserControl.DataContext>
-        <local:LiveViewModel/>
-    </UserControl.DataContext>
-
     <DockPanel>
         <!-- Calendar, Tracking -->
         <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="0 15 0 0">
             <Image DockPanel.Dock="Left" Width="35" Source="{StaticResource Calendar}"/>
-            <TextBlock DockPanel.Dock="Left" Text="{Binding TimerVM.CurrentDate}" FontWeight="DemiBold" Margin="8 3 0 0" VerticalAlignment="Center"/>
-            <ToggleButton DockPanel.Dock="Right" Margin="10 0 0 0" Height="20" Width="68" Style="{StaticResource HoverEvent}" IsChecked="{Binding InputVM.IsTracking, Mode=TwoWay}">
+            <TextBlock DockPanel.Dock="Left" Text="{Binding CurrentDate}" FontWeight="DemiBold" Margin="8 3 0 0" VerticalAlignment="Center"/>
+            <ToggleButton DockPanel.Dock="Right" Margin="10 0 0 0" Height="20" Width="68" Style="{StaticResource HoverEvent}" IsChecked="{Binding IsTracking, Mode=TwoWay}">
                 <ToggleButton.Template>
                     <ControlTemplate TargetType="ToggleButton">
                         <Border x:Name="B1" Background="#E74C3C" CornerRadius="10" Padding="2">
@@ -36,11 +32,11 @@
         <!-- Time, Style -->
         <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="0 5 0 0">
             <Image DockPanel.Dock="Left" Source="{StaticResource Clock}" Width="34"/>
-            <TextBlock DockPanel.Dock="Left" Text="{Binding TimerVM.CurrentTime}" FontWeight="DemiBold" Margin="8 3 0 0" VerticalAlignment="Center"/>
-            <ComboBox DockPanel.Dock="Right" Margin="10 0 0 0" Height="22" Width="87" ItemsSource="{Binding InputVM.Styles}" SelectedItem="{Binding InputVM.SelectedStyle, Mode=TwoWay}">
+            <TextBlock DockPanel.Dock="Left" Text="{Binding CurrentTime}" FontWeight="DemiBold" Margin="8 3 0 0" VerticalAlignment="Center"/>
+            <ComboBox DockPanel.Dock="Right" Margin="10 0 0 0" Height="22" Width="87" ItemsSource="{Binding Styles}" SelectedItem="{Binding SelectedStyle, Mode=TwoWay}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction Command="{Binding InputVM.ChangeTextStyleCommand}"/>
+                        <i:InvokeCommandAction Command="{Binding ChangeTextStyleCommand}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </ComboBox>
@@ -58,11 +54,11 @@
         <!-- Counters, Trash Can, Arrow -->
         <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
             <Image DockPanel.Dock="Left" Margin="0 0 5 0" Width="20" Source="{StaticResource Database}"/>
-            <TextBlock DockPanel.Dock="Left" Text="{Binding InputVM.Entries}" Margin="0 0 15 0" VerticalAlignment="Center"/>
+            <TextBlock DockPanel.Dock="Left" Text="{Binding Entries}" Margin="0 0 15 0" VerticalAlignment="Center"/>
             <Image DockPanel.Dock="Left" Margin="0 0 5 0" Width="20" Source="{StaticResource Keyboard}"/>
-            <TextBlock DockPanel.Dock="Left" Text="{Binding InputVM.KeyStrokes}" Margin="0 0 15 0" VerticalAlignment="Center"/>
+            <TextBlock DockPanel.Dock="Left" Text="{Binding KeyStrokes}" Margin="0 0 15 0" VerticalAlignment="Center"/>
             <Image DockPanel.Dock="Left" Margin="0 0 5 0" Width="20" Source="{StaticResource Mouse}"/>
-            <TextBlock DockPanel.Dock="Left" Text="{Binding InputVM.MouseClicks}" Margin="0 0 15 0" VerticalAlignment="Center"/>
+            <TextBlock DockPanel.Dock="Left" Text="{Binding MouseClicks}" Margin="0 0 15 0" VerticalAlignment="Center"/>
 
             <Image DockPanel.Dock="Right" Margin="5 7 0 0" Height="30" Cursor="Hand" Source="{StaticResource Arrow}" Style="{StaticResource HoverEvent}">
                 <i:Interaction.Triggers>
@@ -79,22 +75,22 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
                         <i:ChangePropertyAction PropertyName="Source" Value="{StaticResource TrashCanActive}"/>
-                        <i:InvokeCommandAction Command="{Binding InputVM.ClearLogCommand}"/>
+                        <i:InvokeCommandAction Command="{Binding ClearLogCommand}"/>
                     </i:EventTrigger>
                     <i:EventTrigger EventName="MouseLeftButtonUp">
                         <i:ChangePropertyAction PropertyName="Source" Value="{StaticResource TrashCan}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
                 <Image.InputBindings>
-                    <MouseBinding Gesture="LeftClick" Command="{Binding InputVM.ClearLogCommand}" />
+                    <MouseBinding Gesture="LeftClick" Command="{Binding ClearLogCommand}" />
                 </Image.InputBindings>
             </Image>
         </DockPanel>
 
         <!-- Logs -->
-        <TextBox DockPanel.Dock="Top" Text="{Binding InputVM.BriefLiveLog}" IsReadOnly="True" Margin="0 0 0 10" Height="20"/>
-        <TextBox DockPanel.Dock="Bottom" x:Name="LiveLogTextBox" Text="{Binding InputVM.LiveLog}" IsReadOnly="True" TextWrapping="Wrap" 
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <TextBox DockPanel.Dock="Top" Text="{Binding BriefLiveLog}" IsReadOnly="True" Margin="0 0 0 10" Padding="2 2 0 0" Height="24" Style="{StaticResource LogTextBoxStyle}"/>
+        <TextBox DockPanel.Dock="Bottom" x:Name="LiveLogTextBox" Text="{Binding LiveLog}" Padding="2 2 0 0" IsReadOnly="True" TextWrapping="Wrap" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Style="{StaticResource LogTextBoxStyle}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="TextChanged">
                     <i:CallMethodAction MethodName="ScrollToEnd"/>

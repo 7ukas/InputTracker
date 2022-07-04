@@ -1,0 +1,113 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Sandbox\\Code\\InputTracker\\InputTracker\\InputTracker.csproj": {}
+  },
+  "projects": {
+    "D:\\Sandbox\\Code\\InputTracker\\InputTracker\\InputTracker.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Sandbox\\Code\\InputTracker\\InputTracker\\InputTracker.csproj",
+        "projectName": "Input Tracker",
+        "projectPath": "D:\\Sandbox\\Code\\InputTracker\\InputTracker\\InputTracker.csproj",
+        "packagesPath": "C:\\Users\\FasT\\.nuget\\packages\\",
+        "outputPath": "D:\\Sandbox\\Code\\InputTracker\\InputTracker\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\FasT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "Dragablz": {
+              "target": "Package",
+              "version": "[0.0.3.223, )"
+            },
+            "Fody": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.6.3, )"
+            },
+            "MaterialDesignColors": {
+              "target": "Package",
+              "version": "[2.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.6, )"
+            },
+            "Microsoft.Xaml.Behaviors.Wpf": {
+              "target": "Package",
+              "version": "[1.1.39, )"
+            },
+            "ModernUI.WPF": {
+              "target": "Package",
+              "version": "[1.0.9, )"
+            },
+            "PropertyChanged.Fody": {
+              "target": "Package",
+              "version": "[3.4.1, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "System.Data.SQLite.Core": {
+              "target": "Package",
+              "version": "[1.0.115.5, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

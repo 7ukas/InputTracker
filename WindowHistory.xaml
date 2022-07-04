@@ -19,7 +19,7 @@
         <!-- Calendars, Check Boxes -->
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 1 0 0">
             <Calendar x:Name="StartCalendar" SelectedDate="{Binding StartDate}" DisplayDate="{Binding StartDate}"
-                      DisplayDateEnd="{Binding Path=SelectedDate, ElementName=EndCalendar, UpdateSourceTrigger=PropertyChanged}"/>
+                     DisplayDateEnd="{Binding Path=SelectedDate, ElementName=EndCalendar, UpdateSourceTrigger=PropertyChanged}"/>
             <Calendar x:Name="EndCalendar" Margin="20 0 0 0" SelectedDate="{Binding EndDate}" DisplayDate="{Binding EndDate}"
                       DisplayDateStart="{Binding Path=SelectedDate, ElementName=StartCalendar, UpdateSourceTrigger=PropertyChanged}"/>
             
@@ -35,13 +35,13 @@
 
                 <!-- Max Rows -->
                 <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
-                    <TextBlock Text="Max Rows:" FontSize="12"/>
+                    <TextBlock Text="Max Rows:" FontSize="12" Margin="0 2 0 0"/>
 
-                    <TextBox x:Name="MaxRows" Text="{Binding MaxRows, Mode=OneWay}" Background="{Binding MaxRowsBackground}" Margin="5 0 0 0" Height="20" Width="46">
+                    <TextBox x:Name="MaxRows" Height="22" Padding="1 2 0 0" Text="{Binding MaxRows}" Background="{Binding MaxRowsBackground}"
+                             Margin="5 0 0 0" Width="48">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="TextChanged">
                                 <i:InvokeCommandAction Command="{Binding AdjustMaxRowsCommand}" CommandParameter="{Binding Path=Text, ElementName=MaxRows}"/>
-                                <i:InvokeCommandAction Command="{Binding VerifySearchCommand}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </TextBox>
@@ -49,7 +49,7 @@
 
                 <!-- Search, Refresh -->
                 <StackPanel Orientation="Horizontal" Margin="0 3 0 0">
-                    <Image Width="38" Cursor="Hand" IsEnabled="{Binding SearchEnabled}" Source="{StaticResource Search}" Style="{StaticResource HoverEvent}">
+                    <Image x:Name="Window" Width="38" Cursor="Hand" IsEnabled="{Binding SearchEnabled}" Source="{StaticResource Search}" Style="{StaticResource HoverEvent}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseLeftButtonDown">
                                 <i:InvokeCommandAction Command="{Binding SearchCommand}"/>
@@ -68,19 +68,19 @@
             </StackPanel>
         </StackPanel>
 
-        <!-- ('Start' Text Boxes), ('End' Text Boxes), (Search, Refresh), (CSV, TXT)  -->
+        <!-- ('Start' Text Boxes), ('End' Text Boxes), (CSV, TXT)  -->
         <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="0 10 0 0">
 
             <!-- 'Start' Text Boxes -->
             <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0 -38 1 0">
-                <TextBox x:Name="StartDate" Width="110" IsReadOnly="True" VerticalAlignment="Top"
+                <TextBox x:Name="StartDate" Height="22" Padding="1 2 0 0" Width="110" IsReadOnly="True" VerticalAlignment="Top"
                     Text="{Binding ElementName=StartCalendar, Path=SelectedDate, StringFormat=yyyy-MM-dd, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <TextBox x:Name="StartTime" Text="{Binding StartTime, Mode=OneWay}" Background="{Binding StartTimeBackground}" Margin="9 0 0 0" Width="59" VerticalAlignment="Top">
+                <TextBox x:Name="StartTime" Height="22" Padding="1 2 0 0" Text="{Binding StartTime}" Background="{Binding StartTimeBackground}" Margin="9 0 0 0" 
+                         Width="59" VerticalAlignment="Top">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="TextChanged">
                             <i:InvokeCommandAction Command="{Binding AdjustStartTimeCommand}" CommandParameter="{Binding Path=Text, ElementName=StartTime}"/>
-                            <i:InvokeCommandAction Command="{Binding VerifySearchCommand}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </TextBox>
@@ -88,14 +88,14 @@
 
             <!-- 'End' Text Boxes -->
             <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="20 -38 1 0">
-                <TextBox x:Name="EndDate" Width="110" IsReadOnly="True" VerticalAlignment="Top"
+                <TextBox x:Name="EndDate" Height="22" Padding="1 2 0 0" Width="110" IsReadOnly="True" VerticalAlignment="Top"
                     Text="{Binding ElementName=EndCalendar, Path=SelectedDate, StringFormat=yyyy-MM-dd, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <TextBox x:Name="EndTime" Text="{Binding EndTime, Mode=OneWay}" Background="{Binding EndTimeBackground}" Margin="9 0 0 0" Width="59" VerticalAlignment="Top">
+                <TextBox x:Name="EndTime" Height="22" Padding="1 2 0 0" Text="{Binding EndTime}" Background="{Binding EndTimeBackground}" Margin="9 0 0 0"
+                         Width="59" VerticalAlignment="Top">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="TextChanged">
                             <i:InvokeCommandAction Command="{Binding AdjustEndTimeCommand}" CommandParameter="{Binding Path=Text, ElementName=EndTime}"/>
-                            <i:InvokeCommandAction Command="{Binding VerifySearchCommand}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </TextBox>
@@ -103,14 +103,15 @@
 
             <!-- CSV, TXT -->
             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" Margin="0 -30 0 5">
-                <Image Width="35" Source="{StaticResource CsvFile}" Style="{StaticResource HoverEvent}">
+                <Image Width="35" Cursor="Hand" Source="{StaticResource CsvFile}" Style="{StaticResource HoverEvent}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction Command="{Binding GenerateCsvFileCommand}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </Image>
-                <Image Width="35" Source="{StaticResource TxtFile}" Style="{StaticResource HoverEvent}">
+
+                <Image Width="35" Cursor="Hand" Source="{StaticResource TxtFile}" Style="{StaticResource HoverEvent}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
                             <i:InvokeCommandAction Command="{Binding GenerateTxtFileCommand}"/>

@@ -1,6 +1,4 @@
 C:\Users\FasT\.nuget\packages\dapper\2.0.123\lib\net5.0\Dapper.dll
-C:\Users\FasT\.nuget\packages\dragablz\0.0.3.223\lib\netcoreapp3.0\Dragablz.dll
-C:\Users\FasT\.nuget\packages\materialdesigncolors\2.0.5\lib\netcoreapp3.1\MaterialDesignColors.dll
 C:\Users\FasT\.nuget\packages\microsoft.entityframeworkcore\6.0.6\lib\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\FasT\.nuget\packages\microsoft.entityframeworkcore.abstractions\6.0.6\lib\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\FasT\.nuget\packages\microsoft.extensions.caching.abstractions\6.0.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll
@@ -15,7 +13,7 @@ C:\Users\FasT\.nuget\packages\microsoft.win32.registry\4.7.0\lib\netstandard2.0\
 C:\Users\FasT\.nuget\packages\microsoft.win32.systemevents\6.0.0\lib\net6.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\FasT\.nuget\packages\microsoft.xaml.behaviors.wpf\1.1.39\lib\net5.0-windows7.0\Microsoft.Xaml.Behaviors.dll
 C:\Users\FasT\.nuget\packages\modernui.wpf\1.0.9\lib\net45\FirstFloor.ModernUI.dll
-C:\Users\FasT\.nuget\packages\stub.system.data.sqlite.core.netstandard\1.0.115.5\lib\netstandard2.1\System.Data.SQLite.dll
+C:\Users\FasT\.nuget\packages\stub.system.data.sqlite.core.netstandard\1.0.116\lib\netstandard2.1\System.Data.SQLite.dll
 C:\Users\FasT\.nuget\packages\system.collections.immutable\6.0.0\lib\net6.0\System.Collections.Immutable.dll
 C:\Users\FasT\.nuget\packages\system.configuration.configurationmanager\6.0.0\lib\net6.0\System.Configuration.ConfigurationManager.dll
 C:\Users\FasT\.nuget\packages\system.data.sqlclient\4.8.3\lib\netcoreapp2.1\System.Data.SqlClient.dll

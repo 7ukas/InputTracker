@@ -1,11 +1,10 @@
-D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\InputTracker.dll
 D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\InputTracker.exe
 D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\InputTracker.dll.config
 D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\InputTracker.deps.json
 D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\InputTracker.runtimeconfig.json
+D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\InputTracker.dll
+D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\InputTracker.pdb
 D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\Dapper.dll
-D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\Dragablz.dll
-D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\MaterialDesignColors.dll
 D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.dll
 D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
@@ -30,11 +29,7 @@ D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\runtimes\win-
 D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\InputTracker.csproj.AssemblyReference.cache
-D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\Styles\Dragablz.baml
 D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\Styles\ImageDictionary.baml
-D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\Styles\MaterialDesign.baml
-D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\Styles\Triggers.baml
-D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\WindowHistory.baml
 D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\WindowMain.baml
 D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\WindowHistory.g.cs
 D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\WindowLive.g.cs
@@ -45,6 +40,7 @@ D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\GeneratedInte
 D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\InputTracker_MarkupCompile.cache
 D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\InputTracker_MarkupCompile.lref
 D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\App.baml
+D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\WindowHistory.baml
 D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\WindowLive.baml
 D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\WindowOverview.baml
 D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\InputTracker.g.resources
@@ -59,5 +55,7 @@ D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\InputTracker.
 D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\refint\InputTracker.dll
 D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\InputTracker.pdb
 D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\InputTracker.genruntimeconfig.cache
-D:\Sandbox\Code\InputTracker\InputTracker\bin\Debug\net6.0-windows\InputTracker.pdb
 D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\ref\InputTracker.dll
+D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\Styles\Controls.baml
+D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\Styles\Layouts.baml
+D:\Sandbox\Code\InputTracker\InputTracker\obj\Debug\net6.0-windows\Styles\StoryBoards.baml

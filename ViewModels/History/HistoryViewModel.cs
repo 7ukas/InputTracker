@@ -1,69 +1,130 @@
 ﻿namespace InputTracker;
 
 internal class HistoryViewModel : BaseViewModel {
+    // Commands
     public ICommand AdjustMaxRowsCommand { get; init; }
     public ICommand AdjustStartTimeCommand { get; init; }
     public ICommand AdjustEndTimeCommand { get; init; }
-    public ICommand VerifySearchCommand { get; init; }
     public ICommand SearchCommand { get; init; }
     public ICommand RefreshCommand { get; init; }
     public ICommand GenerateCsvFileCommand { get; init; }
     public ICommand GenerateTxtFileCommand { get; init; }
     public ICommand ClearDatabaseCommand { get; init; }
 
-    public bool ApplicationColumn { get; set; } = true;
-    public bool WindowColumn { get; set; } = false;
-    public bool RegularTextColumn { get; set; } = true;
-    public bool RawTextColumn { get; set; } = false;
-    public bool KeyStrokesColumn { get; set; } = false;
-    public bool MouseClicksColumn { get; set; } = false;
+    // Properties
+    public bool ApplicationColumn { 
+        get { return _columnsStatus[HistoryColumnIndex.Application]; }
+        set {
+            _columnsStatus[HistoryColumnIndex.Application] = value;
+
+            if (_dataGrid.Columns.Count > 0) {
+                _dataGrid.Columns[HistoryColumnIndex.Application].Visibility = 
+                    _BooleanToVisibility(value);
+            }
+        } 
+    }
+    public bool WindowColumn {
+        get { return _columnsStatus[HistoryColumnIndex.Window]; }
+        set {
+            _columnsStatus[HistoryColumnIndex.Window] = value;
+
+            if (_dataGrid.Columns.Count > 0) {
+                _dataGrid.Columns[HistoryColumnIndex.Window].Visibility =
+                    _BooleanToVisibility(value);
+            }
+        }
+    }
+    public bool RegularTextColumn {
+        get { return _columnsStatus[HistoryColumnIndex.RegularText]; }
+        set {
+            _columnsStatus[HistoryColumnIndex.RegularText] = value;
+
+            if (_dataGrid.Columns.Count > 0) {
+                _dataGrid.Columns[HistoryColumnIndex.RegularText].Visibility =
+                    _BooleanToVisibility(value);
+            }
+        }
+    }
+    public bool RawTextColumn {
+        get { return _columnsStatus[HistoryColumnIndex.RawText]; }
+        set {
+            _columnsStatus[HistoryColumnIndex.RawText] = value;
+
+            if (_dataGrid.Columns.Count > 0) {
+                _dataGrid.Columns[HistoryColumnIndex.RawText].Visibility =
+                    _BooleanToVisibility(value);
+            }
+        }
+    }
+    public bool KeyStrokesColumn {
+        get { return _columnsStatus[HistoryColumnIndex.KeyStrokes]; }
+        set {
+            _columnsStatus[HistoryColumnIndex.KeyStrokes] = value;
+
+            if (_dataGrid.Columns.Count > 0) {
+                _dataGrid.Columns[HistoryColumnIndex.KeyStrokes].Visibility =
+                    _BooleanToVisibility(value);
+            }
+        }
+    }
+    public bool MouseClicksColumn {
+        get { return _columnsStatus[HistoryColumnIndex.MouseClicks]; }
+        set {
+            _columnsStatus[HistoryColumnIndex.MouseClicks] = value;
+
+            if (_dataGrid.Columns.Count > 0) {
+                _dataGrid.Columns[HistoryColumnIndex.MouseClicks].Visibility =
+                    _BooleanToVisibility(value);
+            }
+        }
+    }
     public bool EmptyEntries { get; set; } = true;
-    public string MaxRows { get; private set; } = "10000";
+    public string MaxRows { get; set; } = _defaultMaxRows.ToString();
     public DateTime StartDate { get; set; } = DateTime.Today;
     public DateTime EndDate { get; set; } = DateTime.Today;
-    public string StartTime { get; private set; } = "00:00:01";
-    public string EndTime { get; private set; } = "23:59:59";
+    public string StartTime { get; set; } = _defaultStartTime;
+    public string EndTime { get; set; } = _defaultEndTime;
     public bool SearchEnabled { get; set; } = true;
-    public Brush MaxRowsBackground { get; set; } = Brushes.White;
-    public Brush StartTimeBackground { get; set; } = Brushes.White;
-    public Brush EndTimeBackground { get; set; } = Brushes.White;
+    public Brush MaxRowsBackground { get; set; }
+    public Brush StartTimeBackground { get; set; }
+    public Brush EndTimeBackground { get; set; }
     public string Rows { get; private set; } = "0";
     public string Applications { get; private set; } = "0";
     public string KeyStrokes { get; private set; } = "0";
     public string MouseClicks { get; private set; } = "0";
 
-    private const int _maxRows = 100000;
+    // Local variables
+    private readonly Dictionary<int, bool> _columnsStatus = new Dictionary<int, bool>() {
+        { HistoryColumnIndex.Application, true },
+        { HistoryColumnIndex.Window, false },
+        { HistoryColumnIndex.RegularText, true },
+        { HistoryColumnIndex.RawText, false },
+        { HistoryColumnIndex.KeyStrokes, false },
+        { HistoryColumnIndex.MouseClicks, false }
+    };
+    private const string _defaultStartTime = "00:00:01";
+    private const string _defaultEndTime = "23:59:59";
+    private const int _defaultMaxRows = 100000;
     private const int _maxRowsTextLength = 6;
     private const int _requiredTimeTextLength = 8;
-    private readonly Brush _validColor = Brushes.White;
+    private readonly Brush _validColor = Brushes.White; // Very light blue
     private readonly Brush _invalidColor = (Brush)new BrushConverter().ConvertFrom("#E74C3C"); // Red
     private readonly DataGrid _dataGrid;
     private FileGenerator _fileGenerator;
-
-    private static class _ColumnIndex {
-        public const int
-        ApplicationIndex = 1,
-        WindowIndex = 2,
-        RegularTextIndex = 4,
-        RawTextIndex = 3,
-        KeyStrokesIndex = 5,
-        MouseClicksIndex = 6;
-    }
-
-    public HistoryViewModel(DataGrid dataGrid) : this() {
-        _dataGrid = dataGrid;
-    }
 
     public HistoryViewModel() {
         AdjustMaxRowsCommand = new RelayCommand(AdjustMaxRows);
         AdjustStartTimeCommand = new RelayCommand(AdjustStartTime);
         AdjustEndTimeCommand = new RelayCommand(AdjustEndTime);
-        VerifySearchCommand = new RelayCommand(VerifySearch);
         SearchCommand = new RelayCommand(Search);
         RefreshCommand = new RelayCommand(Refresh);
         GenerateCsvFileCommand = new RelayCommand(GenerateCsvFile);
         GenerateTxtFileCommand = new RelayCommand(GenerateTxtFile);
         ClearDatabaseCommand = new RelayCommand(ClearDatabase);
+    }
+
+    public HistoryViewModel(DataGrid dataGrid) : this() {
+        _dataGrid = dataGrid;
     }
 
     public void AdjustMaxRows(object obj) {
@@ -77,10 +138,12 @@ internal class HistoryViewModel : BaseViewModel {
         int rows;
         int.TryParse(maxRows, out rows);
 
-        if (rows <= _maxRows && rows > 0) {
+        if (rows <= _defaultMaxRows && rows > 0) {
             MaxRows = maxRows;
             MaxRowsBackground = _validColor;
         } else { MaxRowsBackground = _invalidColor; }
+
+        _VerifySearchButton();
     }
 
     public void AdjustStartTime(object obj) {
@@ -90,6 +153,8 @@ internal class HistoryViewModel : BaseViewModel {
             StartTime = startTime;
             StartTimeBackground = _validColor;
         } else StartTimeBackground = _invalidColor;
+
+        _VerifySearchButton();
     }
 
     public void AdjustEndTime(object obj) {
@@ -99,10 +164,11 @@ internal class HistoryViewModel : BaseViewModel {
             EndTime = endTime;
             EndTimeBackground = _validColor;
         } else EndTimeBackground = _invalidColor;
+
+        _VerifySearchButton();
     }
 
-    public void VerifySearch(object obj) {
-        Debug.WriteLine("verifySearch");
+    private void _VerifySearchButton() {
         SearchEnabled = 
             StartTimeBackground == _validColor && 
             EndTimeBackground == _validColor &&
@@ -122,12 +188,12 @@ internal class HistoryViewModel : BaseViewModel {
         _dataGrid.ItemsSource = dbInputs;
         _fileGenerator = new FileGenerator(dbInputs);
 
-        _dataGrid.Columns[_ColumnIndex.ApplicationIndex].Visibility = _BooleanToVisibility(ApplicationColumn);
-        _dataGrid.Columns[_ColumnIndex.WindowIndex].Visibility = _BooleanToVisibility(WindowColumn);
-        _dataGrid.Columns[_ColumnIndex.RegularTextIndex].Visibility = _BooleanToVisibility(RegularTextColumn);
-        _dataGrid.Columns[_ColumnIndex.RawTextIndex].Visibility = _BooleanToVisibility(RawTextColumn);
-        _dataGrid.Columns[_ColumnIndex.KeyStrokesIndex].Visibility = _BooleanToVisibility(KeyStrokesColumn);
-        _dataGrid.Columns[_ColumnIndex.MouseClicksIndex].Visibility = _BooleanToVisibility(MouseClicksColumn);
+        _dataGrid.Columns[HistoryColumnIndex.Application].Visibility = _BooleanToVisibility(ApplicationColumn);
+        _dataGrid.Columns[HistoryColumnIndex.Window].Visibility = _BooleanToVisibility(WindowColumn);
+        _dataGrid.Columns[HistoryColumnIndex.RegularText].Visibility = _BooleanToVisibility(RegularTextColumn);
+        _dataGrid.Columns[HistoryColumnIndex.RawText].Visibility = _BooleanToVisibility(RawTextColumn);
+        _dataGrid.Columns[HistoryColumnIndex.KeyStrokes].Visibility = _BooleanToVisibility(KeyStrokesColumn);
+        _dataGrid.Columns[HistoryColumnIndex.MouseClicks].Visibility = _BooleanToVisibility(MouseClicksColumn);
         
         Rows = StringUtils.FormatCount(dbInputs.Count);
         Applications = StringUtils.FormatCount(dbInputs.GroupBy(x => x.Application).Select(x => x.Key).Count());
@@ -144,11 +210,12 @@ internal class HistoryViewModel : BaseViewModel {
         WindowColumn = RawTextColumn = KeyStrokesColumn = MouseClicksColumn = false;
 
         StartDate = EndDate = DateTime.Today;
-        StartTimeBackground = EndTimeBackground = _validColor;
 
-        StartTime = "00:00:01";
-        EndTime = "23:59:59";
-        MaxRows = "10000";
+        StartTime = _defaultStartTime;
+        EndTime = _defaultEndTime;
+        MaxRows = _defaultMaxRows.ToString();
+
+        StartTimeBackground = EndTimeBackground = MaxRowsBackground = _validColor;
 
         _dataGrid.ItemsSource = null;
         _fileGenerator = null;
@@ -180,11 +247,12 @@ internal class HistoryViewModel : BaseViewModel {
             $"Are you sure you want to REMOVE ALL EXISTING DATA from the database?",
             WindowMain.Title, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes) {
             DatabaseController.ClearDatabase();
+            LiveViewModel.IsTracking = false;
             Refresh(null);
         }
     }
 
-    private bool _IsTimeFormatCorrect(string time, bool startTime) {
+    private bool _IsTimeFormatCorrect(string time, bool isStartingTime) {
         if (time.Length != _requiredTimeTextLength) {
             return false;
         } else {
@@ -199,8 +267,8 @@ internal class HistoryViewModel : BaseViewModel {
         DateTime.TryParseExact(time, "HH:mm:ss",
             CultureInfo.CurrentCulture, DateTimeStyles.None, out dateTime);
 
-        return (startTime && dateTime < DateTime.Parse(EndTime)) || 
-            (!startTime && dateTime > DateTime.Parse(StartTime)) &&
+        return (isStartingTime && dateTime < DateTime.Parse(EndTime)) || 
+            (!isStartingTime && dateTime > DateTime.Parse(StartTime)) &&
             dateTime.ToString().Substring(11) != "00:00:00";
     }
 
