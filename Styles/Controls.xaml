@@ -58,35 +58,4 @@
             </EventTrigger>
         </Style.Triggers>
     </Style>
-    <!-- #3458DB-->
-    <Style TargetType="{x:Type ScrollBar}">
-        <Setter Property="MinWidth" Value="15"/>
-        <Setter Property="Width" Value="15"/>
-        <Setter Property="Background" Value="Transparent"/>
-        
-    </Style>
-
-
-    <Style TargetType="{x:Type RepeatButton}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Border Background="Transparent">
-                        <Grid>
-                            <Path x:Name="Arrow" Width="12" Height="8" Data="M0,0 L12,0 L6,8z" Fill="Red"/>
-                        </Grid>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Arrow" Property="Fill" Value="LightGreen"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="Arrow" Property="Fill" Value="Orange"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        
-    </Style>
 </ResourceDictionary>
