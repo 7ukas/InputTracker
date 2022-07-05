@@ -93,7 +93,7 @@ internal class HistoryViewModel : BaseViewModel {
     public string KeyStrokes { get; private set; } = "0";
     public string MouseClicks { get; private set; } = "0";
 
-    // Local variables
+    // Current status of data grid columns
     private readonly Dictionary<int, bool> _columnsStatus = new Dictionary<int, bool>() {
         { HistoryColumnIndex.Application, true },
         { HistoryColumnIndex.Window, false },
@@ -102,14 +102,22 @@ internal class HistoryViewModel : BaseViewModel {
         { HistoryColumnIndex.KeyStrokes, false },
         { HistoryColumnIndex.MouseClicks, false }
     };
+
+    // Time and MaxRows
     private const string _defaultStartTime = "00:00:01";
     private const string _defaultEndTime = "23:59:59";
     private const int _defaultMaxRows = 100000;
     private const int _maxRowsTextLength = 6;
     private const int _requiredTimeTextLength = 8;
+
+    // Background Brushes
     private readonly Brush _validColor = Brushes.White; // Very light blue
     private readonly Brush _invalidColor = (Brush)new BrushConverter().ConvertFrom("#E74C3C"); // Red
+
+    // Data Grid
     private readonly DataGrid _dataGrid;
+
+    // File Generator
     private FileGenerator _fileGenerator;
 
     public HistoryViewModel() {

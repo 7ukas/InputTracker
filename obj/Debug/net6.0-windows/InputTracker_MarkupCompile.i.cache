@@ -1,5 +1,5 @@
 ﻿InputTracker
-
+1.0.0.0
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\Sandbox\Code\InputTracker\InputTracker\App.xaml
 8-934006153
 
-351684972703
+37-571833247
 211-1286575690
 Styles\Controls.xaml;Styles\ImageDictionary.xaml;Styles\Layouts.xaml;Styles\StoryBoards.xaml;WindowHistory.xaml;WindowLive.xaml;WindowMain.xaml;WindowOverview.xaml;
 
-False
+True
 

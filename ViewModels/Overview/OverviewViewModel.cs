@@ -5,7 +5,7 @@ internal class OverviewViewModel : BaseViewModel {
     public ICommand CustomizeStatisticsCommand { get; init; }
     public ICommand SortApplicationsTableCommand { get; init; }
 
-    // Static property
+    // Static property to get last time database was updated
     public static event PropertyChangedEventHandler StaticPropertyChanged;
     public static void NotifyStaticPropertyChanged([CallerMemberName] string propertyName = null) {
         StaticPropertyChanged?.Invoke(null, new PropertyChangedEventArgs(propertyName));
@@ -33,15 +33,23 @@ internal class OverviewViewModel : BaseViewModel {
     private bool _IsMouseClicksOrderAscending { get; set; } = false;
     public string SelectedStatisticsTimeSpan { get; set; } = "Today";
 
-    // Local variables
+    // Database
     private static string _lastUpdated = "";
-    private ApplicationListener _applicationListener;
     private List<DBStatistics> _dbStatistics = new();
-    private List<dbApplications> _dbApplications = new();
+    private List<DBApplication> _dbApplications = new();
+
+    // Listener
+    private ApplicationListener _applicationListener;
+
+    // Custom statistics table (total/today)
     private List<string> _totalStatistics;
     private List<string> _todayStatistics;
-    private readonly List<string> _defaultStatistics = new() { "0", "0", "0" };
+
+    // Current sort order for applications table
     private string _applicationsTableSortOrder = "Title";
+
+    // Default values set to statistic tables in the very beggining
+    private readonly List<string> _defaultStatistics = new() { "0", "0", "0" };
 
     public OverviewViewModel() {
         CustomizeStatisticsCommand = new RelayCommand(CustomizeStatistics);
@@ -53,26 +61,28 @@ internal class OverviewViewModel : BaseViewModel {
             new BitmapImage(new Uri("pack://application:,,,/InputTracker;component/Resources/Images/mouse_white.png")),
         };
 
+        // Hooking listener to get latest data from database
+        _applicationListener = new ApplicationListener();
+        _applicationListener.OnApplicationChanged += _OnApplicationChangedEvent;
+        _applicationListener.HookApplication();
+
+        // Setting up values for statistic tables
         CustomStatistics = new ObservableCollection<string>(_defaultStatistics);
         YearStatistics = new ObservableCollection<string>(_defaultStatistics);
         MonthStatistics = new ObservableCollection<string>(_defaultStatistics);
         WeekStatistics = new ObservableCollection<string>(_defaultStatistics);
 
-        _applicationListener = new ApplicationListener();
-        _applicationListener.OnApplicationChanged += _OnApplicationChangedEvent;
-        _applicationListener.HookApplication();
-
         _dbStatistics = new List<DBStatistics>();
+        _totalStatistics = new List<string>(_defaultStatistics);
+        _todayStatistics = new List<string>(_defaultStatistics);
 
         _dbApplications = DatabaseController.GetApplications().
             OrderBy(x => x.Title).ThenBy(x => x.KeyStrokes).ToList();
 
         _UpdateApplicationsTable(_dbApplications);
-
-        _totalStatistics = new List<string>(_defaultStatistics);
-        _todayStatistics = new List<string>(_defaultStatistics);
     }
 
+    // Switch statistics between 'Total' and 'Today'
     public void CustomizeStatistics(object obj) {
         if (SelectedStatisticsTimeSpan == "Today") {
             CustomStatistics = new ObservableCollection<string>(_totalStatistics);
@@ -131,6 +141,7 @@ internal class OverviewViewModel : BaseViewModel {
         _dbApplications = DatabaseController.GetApplications().
             OrderBy(x => x.Title).ThenBy(x => x.KeyStrokes).ToList();
 
+        // Make sure that after data update sorting order maintains correct
         if (_applicationsTableSortOrder == "Title") {
             _IsTitleOrderAscending = !_IsTitleOrderAscending;
         } else if (_applicationsTableSortOrder == "KeyStrokes") {
@@ -191,7 +202,7 @@ internal class OverviewViewModel : BaseViewModel {
         WeekStatistics[2] = StringUtils.FormatCount(stats.MouseClicks);
     }
 
-    private void _UpdateApplicationsTable(List<dbApplications> dbApplications) {
+    private void _UpdateApplicationsTable(List<DBApplication> dbApplications) {
         ApplicationsTableTitles = new ObservableCollection<string>(
              dbApplications.Select(x => x.Title).ToList()
          );

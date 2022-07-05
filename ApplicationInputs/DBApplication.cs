@@ -1,6 +1,6 @@
 ﻿namespace InputTracker;
 
-internal class dbApplications {
+internal class DBApplication {
     public string Title { get; set; }
     public int KeyStrokes { get; set; }
     public int MouseClicks { get; set; }

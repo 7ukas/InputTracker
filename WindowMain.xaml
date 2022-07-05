@@ -21,7 +21,7 @@
         <ToggleButton Grid.Row="0" Grid.Column="1" Content="LIVE" IsChecked="{Binding IsLiveWindowDisplayed}" Style="{StaticResource TabMenuButtonStyle}"/>
         <ToggleButton Grid.Row="0" Grid.Column="2" Content="HISTORY" IsChecked="{Binding IsHistoryWindowDisplayed}" Style="{StaticResource TabMenuButtonStyle}"/>
 
-        <Grid x:Name="WindowPanel" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="White"/>
+        <Grid x:Name="WindowGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="White"/>
     </Grid>
 
 </Window>

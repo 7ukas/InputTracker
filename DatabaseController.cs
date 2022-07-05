@@ -71,9 +71,9 @@ internal sealed class DatabaseController {
         }
     }
 
-    public static List<dbApplications> GetApplications() {
+    public static List<DBApplication> GetApplications() {
         using (IDbConnection connection = GetConnection()) {
-            return connection.Query<dbApplications>(
+            return connection.Query<DBApplication>(
                 $"SELECT Application AS Title, KeyStrokes, MouseClicks FROM {ApplicationsTable}").ToList();
         }
     }

@@ -5,7 +5,7 @@ internal class LiveViewModel : BaseViewModel {
     public ICommand ChangeTextStyleCommand { get; init; }
     public ICommand ClearLogCommand { get; init; }
 
-    // Static Property
+    // Static property to know if inputs are being tracked
     public static event PropertyChangedEventHandler StaticPropertyChanged;
     public static void NotifyStaticPropertyChanged([CallerMemberName] string propertyName = null) {
         StaticPropertyChanged?.Invoke(null, new PropertyChangedEventArgs(propertyName));
@@ -23,7 +23,7 @@ internal class LiveViewModel : BaseViewModel {
     private static bool _isTracking = false;
     public string CurrentDate { get; private set; }
     public string CurrentTime { get; private set; }
-    public string SelectedStyle { get; set; } = "Regular";
+    public string SelectedStyle { get; set; } = TextStyle.Regular;
     public string BriefLiveLog { get; set; } = "";
     public string LiveLog { get; set; } = "";
     public string Entries { get; set; } = "0";
@@ -48,6 +48,7 @@ internal class LiveViewModel : BaseViewModel {
     private readonly Image _mouseImage;
 
     // Log
+    private int _briefLogCharLimit = 84;
     private int _logCharLimit = 10000;
     private string _liveRegularLog = "";
     private string _liveRawLog = "";
@@ -67,8 +68,8 @@ internal class LiveViewModel : BaseViewModel {
         ClearLogCommand = new RelayCommand(ClearLog);
 
         Styles = new ObservableCollection<string>() {
-            "Regular",
-            "Raw"
+            TextStyle.Regular,
+            TextStyle.Raw
         };
 
         _inputListener = new InputDeviceListener();
@@ -97,9 +98,9 @@ internal class LiveViewModel : BaseViewModel {
     }
 
     public void ChangeTextStyle(object obj) {
-        if (SelectedStyle == "Regular") {
+        if (SelectedStyle == TextStyle.Regular) {
             LiveLog = _liveRegularLog;
-        } else if (SelectedStyle == "Raw") {
+        } else if (SelectedStyle == TextStyle.Raw) {
             LiveLog = _liveRawLog;
         }
     }
@@ -121,19 +122,19 @@ internal class LiveViewModel : BaseViewModel {
             return;
         }
 
-        // Reset live log once length reaches 84
-        if (BriefLiveLog.Length > 84) {
+        // Reset live log once length reaches certain amount of characters
+        if (BriefLiveLog.Length > _briefLogCharLimit) {
             BriefLiveLog = "";
         }
 
         // Add pressed key
         _keyInputStructure.Add(new KeyInput(e.KeyPressed, e.ToggleKeys, e.ModifierKeys));
 
-        BriefLiveLog += SelectedStyle == "Regular" ?
+        BriefLiveLog += SelectedStyle == TextStyle.Regular ?
             _keyInputStructure.LastRegularText : _keyInputStructure.LastRawText;
         KeyStrokes = StringUtils.FormatCount(++_keyStrokes);
 
-        // Image animation - Raising meaningless event
+        // Raising dummy event to trigger image animation
         MouseButtonEventArgs args = new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left);
         args.RoutedEvent = Button.MouseDownEvent;
         _keyboardImage.RaiseEvent(args);
@@ -148,7 +149,7 @@ internal class LiveViewModel : BaseViewModel {
         _buttonInputStructure.Add(e.ButtonClicked);
         MouseClicks = StringUtils.FormatCount(++_mouseClicks);
 
-        // Image animation - Raising meaningless event
+        // Raising dummy event to trigger image animation
         MouseButtonEventArgs args = new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left);
         args.RoutedEvent = Button.MouseDownEvent;
         _mouseImage.RaiseEvent(args);
@@ -166,7 +167,7 @@ internal class LiveViewModel : BaseViewModel {
         );
         _applicationInputStructure.Add(input);
 
-        // Update database
+        // Update database and last time it was updated
         DatabaseController.UpdateDatabaseAsync(input);
 
         _lastUpdated = 0.0;
@@ -180,10 +181,10 @@ internal class LiveViewModel : BaseViewModel {
         _keyInputStructure = new KeyInputStructure();
         _buttonInputStructure = new ButtonInputStructure();
 
-        // Remove early entries from live log (char limit: 10,000)
+        // Remove early entries from live log (apply char limit)
         _liveRegularLog = StringUtils.ShrinkLog(_applicationInputStructure.RegularLog, _logCharLimit);
         _liveRawLog = StringUtils.ShrinkLog(_applicationInputStructure.RawLog, _logCharLimit);
-        LiveLog = SelectedStyle == "Regular" ? _liveRegularLog : _liveRawLog;
+        LiveLog = SelectedStyle == TextStyle.Regular ? _liveRegularLog : _liveRawLog;
 
         Entries = StringUtils.FormatCount(++_entries);
     }
