@@ -111,6 +111,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Resources\Images\logo.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>

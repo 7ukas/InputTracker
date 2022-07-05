@@ -4,11 +4,7 @@
     <ShowAllFiles>false</ShowAllFiles>
     <_LastSelectedProfileId>C:\Users\FasT\source\repos\InputTrackerWPF\InputTrackerWPF\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
-  <ItemGroup>
-    <ApplicationDefinition Update="App.xaml">
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Update="Styles\Controls.xaml">
       <SubType>Designer</SubType>
