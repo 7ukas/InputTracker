@@ -142,7 +142,7 @@
         
         <!-- Data Grid -->
         <DataGrid x:Name="DatabaseDataGrid" DockPanel.Dock="Bottom" Background="White" RowBackground="#99ccff" 
-                  AlternatingRowBackground="#c2e0ff" BorderThickness="1" AreRowDetailsFrozen="True" 
+                  AlternatingRowBackground="#c2e0ff" BorderThickness="1" AreRowDetailsFrozen="True" HeadersVisibility="Column"
                   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" SelectionMode="Extended" MaxColumnWidth="512"/>
     </DockPanel>
 </UserControl>
