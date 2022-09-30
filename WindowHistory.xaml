@@ -1,102 +1,148 @@
-﻿<UserControl x:Class="InputTracker.WindowDatabase"
+﻿<UserControl x:Class="InputTracker.WindowHistory"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Loaded="_Window_Loaded">
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:local="clr-namespace:InputTracker">
 
-    <UserControl.Resources>
-        <FontFamily x:Key="OpenSans">/Fonts/#OpenSans-Regular</FontFamily>
+    <UserControl.DataContext>
+        <local:HistoryViewModel/>
+    </UserControl.DataContext>
+
+    <DockPanel>
+        <!-- Start, End, Content Options -->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 15 0 0">
+            <TextBlock Text="Start" FontWeight="DemiBold"/>
+            <TextBlock Text="End" FontWeight="DemiBold" Margin="175 0 0 0"/>
+            <TextBlock Text="Content Options" FontWeight="DemiBold" Margin="175 0 0 0"/>
+        </StackPanel>
         
-        <Style TargetType="{x:Type Window}">
-            <Setter Property="FontFamily" Value="{StaticResource OpenSans}" />
-        </Style>
+        <!-- Calendars, Check Boxes -->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 1 0 0">
+            <Calendar x:Name="StartCalendar" SelectedDate="{Binding StartDate}" DisplayDate="{Binding StartDate}"
+                     DisplayDateEnd="{Binding Path=SelectedDate, ElementName=EndCalendar, UpdateSourceTrigger=PropertyChanged}"/>
+            <Calendar x:Name="EndCalendar" Margin="20 0 0 0" SelectedDate="{Binding EndDate}" DisplayDate="{Binding EndDate}"
+                      DisplayDateStart="{Binding Path=SelectedDate, ElementName=StartCalendar, UpdateSourceTrigger=PropertyChanged}"/>
+            
+            <!-- Check Boxes -->
+            <StackPanel Margin="18 0 0 0">
+                <CheckBox Content="Application" IsChecked="{Binding ApplicationColumn}" Margin="0 5 0 0"/>
+                <CheckBox Content="Window" IsChecked="{Binding WindowColumn}" Margin="0 5 0 0"/>
+                <CheckBox Content="Regular text" IsChecked="{Binding RegularTextColumn}" Margin="0 5 0 0"/>
+                <CheckBox Content="Raw text" IsChecked="{Binding RawTextColumn}" Margin="0 5 0 0"/>
+                <CheckBox Content="Key strokes" IsChecked="{Binding KeyStrokesColumn}" Margin="0 5 0 0"/>
+                <CheckBox Content="Mouse clicks" IsChecked="{Binding MouseClicksColumn}" Margin="0 5 0 0"/>
+                <CheckBox Content="Empty entries" IsChecked="{Binding EmptyEntries}" Margin="0 5 0 0"/>
 
-        <Style TargetType="{x:Type Image}">
-            <Style.Triggers>
-                <EventTrigger RoutedEvent="Mouse.MouseEnter">
-                    <EventTrigger.Actions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Opacity" To="0.75" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger.Actions>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="Mouse.MouseLeave">
-                    <EventTrigger.Actions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Duration="0:0:0.300" Storyboard.TargetProperty="Opacity" To="1.0" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger.Actions>
-                </EventTrigger>
-            </Style.Triggers>
-        </Style>
-    </UserControl.Resources>
+                <!-- Max Rows -->
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                    <TextBlock Text="Max Rows:" FontSize="12" Margin="0 2 0 0"/>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+                    <TextBox x:Name="MaxRows" Height="22" Padding="1 2 0 0" Text="{Binding MaxRows}" Background="{Binding MaxRowsBackground}"
+                             Margin="5 0 0 0" Width="48">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding AdjustMaxRowsCommand}" CommandParameter="{Binding Path=Text, ElementName=MaxRows}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </StackPanel>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+                <!-- Search, Refresh -->
+                <StackPanel Orientation="Horizontal" Margin="0 3 0 0">
+                    <Image x:Name="Window" Width="38" Cursor="Hand" IsEnabled="{Binding SearchEnabled}" Source="{StaticResource Search}" Style="{StaticResource HoverEvent}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding SearchCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Image>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" Text="Start" FontWeight="DemiBold"/>
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="End" FontWeight="DemiBold"/>
+                    <Image Margin="10 0 0 0" Width="30" Cursor="Hand" Source="{StaticResource Refresh}" Style="{StaticResource HoverEvent}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding RefreshCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Image>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
 
-        <Calendar Name="calendar_Start" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,20,10" 
-                  SelectedDatesChanged="_OnStartDateChanged"/>
-        <Calendar Name="calendar_End" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,20,0"/>
+        <!-- ('Start' Text Boxes), ('End' Text Boxes), (CSV, TXT)  -->
+        <DockPanel DockPanel.Dock="Top" LastChildFill="False" Margin="0 10 0 0">
 
-        <TextBlock Grid.Column="2" Grid.Row="1" Text="Content Options" FontWeight="DemiBold"/>
-        <CheckBox Name="checkBox_Application" Grid.Column="2" Grid.Row="2" IsChecked="True" Margin="0,5,0,0" Click="_OnApplicationColumnChanged">Application</CheckBox>
-        <CheckBox Name="checkBox_Window" Grid.Column="2" Grid.Row="2" IsChecked="False" Margin="0,25,0,0" Click="_OnWindowColumnChanged">Window</CheckBox>
-        <CheckBox Name="checkBox_RawText" Grid.Column="2" Grid.Row="2" IsChecked="False" Margin="0,45,0,0" Click="_OnRawTextColumnChanged">Raw text</CheckBox>
-        <CheckBox Name="checkBox_RegularText" Grid.Column="2" Grid.Row="2" IsChecked="True" Margin="0,65,0,0" Click="_OnRegularTextColumnChanged">Regular text</CheckBox>
-        <CheckBox Name="checkBox_KeyStrokes" Grid.Column="2" Grid.Row="2" IsChecked="False" Margin="0,85,0,0" Click="_OnKeyStrokesColumnChanged">Key strokes</CheckBox>
-        <CheckBox Name="checkBox_MouseClicks" Grid.Column="2" Grid.Row="2" IsChecked="False" Margin="0,105,0,0" Click="_OnMouseClicksColumnChanged">Mouse clicks</CheckBox>
-        <CheckBox Name="checkBox_EmptyEntries" Grid.Column="2" Grid.Row="2" IsChecked="True" Margin="0,125,0,0">Empty entries</CheckBox>
-        <TextBlock Grid.Column="2" Grid.Row="2" Text="Max Rows:" Margin="0,147,0,0" FontSize="12"/>
-        <TextBox Name="textBox_MaxRows" Grid.Column="2" Grid.Row="2" Text="10000" Height="20" Width="46" HorizontalAlignment="Left" Margin="60,134,0,0" TextChanged="_OnMaxRowsChanged"/>
+            <!-- 'Start' Text Boxes -->
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0 -38 1 0">
+                <TextBox x:Name="StartDate" Height="22" Padding="1 2 0 0" Width="110" IsReadOnly="True" VerticalAlignment="Top"
+                    Text="{Binding ElementName=StartCalendar, Path=SelectedDate, StringFormat=yyyy-MM-dd, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <TextBox Name="textBox_StartDate" Grid.Column="0" Grid.Row="3" Width="110" HorizontalAlignment="Left" Margin="0,0,0,25" IsReadOnly="True"
-                 Text="{Binding ElementName=calendar_Start, Path=SelectedDate, StringFormat=yyyy-MM-dd, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox Name="textBox_StartTime" Grid.Column="0" Grid.Row="3" Width="59" HorizontalAlignment="Left" Margin="120,0,0,25"
-                 Text="00:00:01" TextChanged="_OnStartTimeChanged"/>
+                <TextBox x:Name="StartTime" Height="22" Padding="1 2 0 0" Text="{Binding StartTime}" Background="{Binding StartTimeBackground}" Margin="9 0 0 0" 
+                         Width="59" VerticalAlignment="Top">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="TextChanged">
+                            <i:InvokeCommandAction Command="{Binding AdjustStartTimeCommand}" CommandParameter="{Binding Path=Text, ElementName=StartTime}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+            </StackPanel>
+
+            <!-- 'End' Text Boxes -->
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="20 -38 1 0">
+                <TextBox x:Name="EndDate" Height="22" Padding="1 2 0 0" Width="110" IsReadOnly="True" VerticalAlignment="Top"
+                    Text="{Binding ElementName=EndCalendar, Path=SelectedDate, StringFormat=yyyy-MM-dd, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <TextBox x:Name="EndTime" Height="22" Padding="1 2 0 0" Text="{Binding EndTime}" Background="{Binding EndTimeBackground}" Margin="9 0 0 0"
+                         Width="59" VerticalAlignment="Top">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="TextChanged">
+                            <i:InvokeCommandAction Command="{Binding AdjustEndTimeCommand}" CommandParameter="{Binding Path=Text, ElementName=EndTime}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+            </StackPanel>
+
+            <!-- CSV, TXT -->
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" Margin="0 -30 0 5">
+                <Image Width="35" Cursor="Hand" Source="{StaticResource CsvFile}" Style="{StaticResource HoverEvent}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding GenerateCsvFileCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Image>
+
+                <Image Width="35" Cursor="Hand" Source="{StaticResource TxtFile}" Style="{StaticResource HoverEvent}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding GenerateTxtFileCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Image>
+            </StackPanel>
+        </DockPanel>
+
+        <!-- Counters, Trash Can -->
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
+            <Image DockPanel.Dock="Left" Width="20" Source="{StaticResource Database}"/>
+            <TextBlock DockPanel.Dock="Left" Text="{Binding Rows}" Margin="5 0 0 0" VerticalAlignment="Center"/>
+            <Image DockPanel.Dock="Left" Margin="15 0 0 0" Width="20" Source="{StaticResource Console}"/>
+            <TextBlock DockPanel.Dock="Left" Text="{Binding Applications}" Margin="5 0 0 0" VerticalAlignment="Center"/>
+            <Image DockPanel.Dock="Left" Margin="15 0 0 0" Width="20" Source="{StaticResource Keyboard}"/>
+            <TextBlock DockPanel.Dock="Left" Text="{Binding KeyStrokes}" Margin="5 0 0 0" VerticalAlignment="Center"/>
+            <Image DockPanel.Dock="Left" Margin="15 0 0 0" Width="20" Source="{StaticResource Mouse}"/>
+            <TextBlock DockPanel.Dock="Left" Text="{Binding MouseClicks}" Margin="5 0 0 0" VerticalAlignment="Center"/>
+            <Image DockPanel.Dock="Right" Margin="0 7 0 0" Height="30" Source="{StaticResource TrashCan2}" Style="{StaticResource HoverEvent}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding ClearDatabaseCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Image>
+        </DockPanel>
         
-        <TextBox Name="textBox_EndDate" Grid.Column="1" Grid.Row="3" Width="110" HorizontalAlignment="Left" Margin="0,0,0,25" IsReadOnly="True"
-                 Text="{Binding ElementName=calendar_End, Path=SelectedDate, StringFormat=yyyy-MM-dd, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox Name="textBox_EndTime" Grid.Column="1" Grid.Row="3" Width="59" HorizontalAlignment="Left" Margin="120,0,0,25" 
-                 Text="23:59:59" TextChanged="_OnEndTimeChanged"/>
-        <Image x:Name="image_Search" Grid.Column="2" Grid.Row="3" Width="38" Source="{StaticResource Search}" Margin="0,-10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" MouseDown="_OnSearch"/>
-        <Image x:Name="image_Refresh" Grid.Column="2" Grid.Row="3" Width="30" Source="{StaticResource Refresh}" Margin="47,-7,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" MouseDown="_OnRefreshClicked"/>
-        <Image x:Name="image_CsvFile" Grid.Column="2" Grid.Row="3" Width="35" Source="{StaticResource CsvFile}" Margin="0,0,35,0" HorizontalAlignment="Right" VerticalAlignment="Center" MouseDown="_OnCsvFileClicked"/>
-        <Image x:Name="image_TxtFile" Grid.Column="2" Grid.Row="3" Width="35" Source="{StaticResource TxtFile}" HorizontalAlignment="Right" VerticalAlignment="Center" MouseDown="_OnTxtFileClicked"/>
-
-
-        <DataGrid Name="dataGrid_Inputs" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" Margin="0,0,0,5" Background="White" RowBackground="#99ccff" 
-                  AlternatingRowBackground="#c2e0ff" BorderThickness="1" AreRowDetailsFrozen="True" 
+        <!-- Data Grid -->
+        <DataGrid x:Name="DatabaseDataGrid" DockPanel.Dock="Bottom" Background="White" RowBackground="#99ccff" 
+                  AlternatingRowBackground="#c2e0ff" BorderThickness="1" AreRowDetailsFrozen="True" HeadersVisibility="Column"
                   HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" SelectionMode="Extended" MaxColumnWidth="512"/>
-
-        <Image Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" Margin="0,5,0,0" Width="20" Source="{StaticResource Database}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <TextBlock Name="textBlock_Rows" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" Text="0" Margin="26,7,0,0" HorizontalAlignment="Left"/>
-        <Image Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" Margin="80,5,0,0" Width="20" Source="{StaticResource Console}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <TextBlock Name="textBlock_Applications" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" Text="0" Margin="107,7,0,0" HorizontalAlignment="Left"/>
-        <Image Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" Margin="160,5,0,0" Width="20" Source="{StaticResource Keyboard}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <TextBlock Name="textBlock_KeyStrokes" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" Text="0" Margin="187,7,0,0" HorizontalAlignment="Left"/>
-        <Image Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" Margin="240,5,0,0" Width="20" Source="{StaticResource Mouse}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <TextBlock Name="textBlock_MouseClicks" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" Text="0" Margin="265,7,0,0" HorizontalAlignment="Left"/>
-        <Image x:Name="image_TrashCan" Grid.Column="2" Grid.Row="5" Margin="0,5,0,0" Height="30" Source="{StaticResource TrashCan2}" HorizontalAlignment="Right" VerticalAlignment="Center" MouseDown="_OnTrashCanEmptied"/>
-
-
-    </Grid>
+    </DockPanel>
 </UserControl>

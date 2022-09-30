@@ -10,82 +10,84 @@
     <Product>Input Tracker</Product>
     <PackageId>Input Tracker</PackageId>
     <Company></Company>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <Description>Input Tracker</Description>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="resources\fonts\OpenSans-Regular.ttf" />
-    <None Remove="resources\images\application.png" />
-    <None Remove="resources\images\arrow.png" />
-    <None Remove="resources\images\arrow_active.png" />
-    <None Remove="resources\images\calendar.png" />
-    <None Remove="resources\images\clearSymbol.png" />
-    <None Remove="resources\images\clock.png" />
-    <None Remove="resources\images\console.png" />
-    <None Remove="resources\images\console_white.png" />
-    <None Remove="resources\images\csvFile.png" />
-    <None Remove="resources\images\database.png" />
-    <None Remove="resources\images\database_updated.png" />
-    <None Remove="resources\images\database_white.png" />
-    <None Remove="resources\images\default.png" />
-    <None Remove="resources\images\keyboard.png" />
-    <None Remove="resources\images\keyboard2.png" />
-    <None Remove="resources\images\keyboardActive.png" />
-    <None Remove="resources\images\keyboard_active.png" />
-    <None Remove="resources\images\keyboard_darkgrey.png" />
-    <None Remove="resources\images\keyboard_navyblue.png" />
-    <None Remove="resources\images\keyboard_white.png" />
-    <None Remove="resources\images\mouse.png" />
-    <None Remove="resources\images\mouse_active.png" />
-    <None Remove="resources\images\mouse_white.png" />
-    <None Remove="resources\images\pdfFile.png" />
-    <None Remove="resources\images\refresh.png" />
-    <None Remove="resources\images\search.png" />
-    <None Remove="resources\images\trashCan.png" />
-    <None Remove="resources\images\trashCan2.png" />
-    <None Remove="resources\images\trashCan_active.png" />
-    <None Remove="resources\images\txtFile.png" />
+    <None Remove="Resources\Images\application.png" />
+    <None Remove="Resources\Images\arrow.png" />
+    <None Remove="Resources\Images\arrow_active.png" />
+    <None Remove="Resources\Images\calendar.png" />
+    <None Remove="Resources\Images\clearSymbol.png" />
+    <None Remove="Resources\Images\clock.png" />
+    <None Remove="Resources\Images\console.png" />
+    <None Remove="Resources\Images\console_white.png" />
+    <None Remove="Resources\Images\csvFile.png" />
+    <None Remove="Resources\Images\database.png" />
+    <None Remove="Resources\Images\database_updated.png" />
+    <None Remove="Resources\Images\database_white.png" />
+    <None Remove="Resources\Images\default.png" />
+    <None Remove="Resources\Images\keyboard.png" />
+    <None Remove="Resources\Images\keyboard2.png" />
+    <None Remove="Resources\Images\keyboardActive.png" />
+    <None Remove="Resources\Images\keyboard_active.png" />
+    <None Remove="Resources\Images\keyboard_darkgrey.png" />
+    <None Remove="Resources\Images\keyboard_navyblue.png" />
+    <None Remove="Resources\Images\keyboard_white.png" />
+    <None Remove="Resources\Images\mouse.png" />
+    <None Remove="Resources\Images\mouse_active.png" />
+    <None Remove="Resources\Images\mouse_white.png" />
+    <None Remove="Resources\Images\pdfFile.png" />
+    <None Remove="Resources\Images\refresh.png" />
+    <None Remove="Resources\Images\search.png" />
+    <None Remove="Resources\Images\trashCan.png" />
+    <None Remove="Resources\Images\trashCan2.png" />
+    <None Remove="Resources\Images\trashCan_active.png" />
+    <None Remove="Resources\Images\txtFile.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
-    <PackageReference Include="Dragablz" Version="0.0.3.223" />
-    <PackageReference Include="MaterialDesignColors" Version="2.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
+    <PackageReference Include="Fody" Version="6.6.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
     <PackageReference Include="ModernUI.WPF" Version="1.0.9" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+    <PackageReference Include="PropertyChanged.Fody" Version="4.0.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.1" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
-    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.115.5" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.116" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="resources\fonts\OpenSans-Regular.ttf" />
-    <Resource Include="resources\images\application.png" />
-    <Resource Include="resources\images\arrow.png" />
-    <Resource Include="resources\images\arrow_active.png" />
-    <Resource Include="resources\images\calendar.png" />
-    <Resource Include="resources\images\clock.png" />
-    <Resource Include="resources\images\console.png" />
-    <Resource Include="resources\images\console_white.png" />
-    <Resource Include="resources\images\csvFile.png" />
-    <Resource Include="resources\images\database.png" />
-    <Resource Include="resources\images\database_updated.png" />
-    <Resource Include="resources\images\database_white.png" />
-    <Resource Include="resources\images\keyboard.png" />
-    <Resource Include="resources\images\keyboard_active.png" />
-    <Resource Include="resources\images\keyboard_white.png" />
-    <Resource Include="resources\images\mouse.png" />
-    <Resource Include="resources\images\mouse_active.png" />
-    <Resource Include="resources\images\mouse_white.png" />
-    <Resource Include="resources\images\pdfFile.png" />
-    <Resource Include="resources\images\refresh.png" />
-    <Resource Include="resources\images\search.png" />
-    <Resource Include="resources\images\trashCan.png" />
-    <Resource Include="resources\images\trashCan2.png" />
-    <Resource Include="resources\images\trashCan_active.png" />
-    <Resource Include="resources\images\txtFile.png" />
+    <Resource Include="Resources\Images\application.png" />
+    <Resource Include="Resources\Images\arrow.png" />
+    <Resource Include="Resources\Images\arrow_active.png" />
+    <Resource Include="Resources\Images\calendar.png" />
+    <Resource Include="Resources\Images\clock.png" />
+    <Resource Include="Resources\Images\console.png" />
+    <Resource Include="Resources\Images\console_white.png" />
+    <Resource Include="Resources\Images\csvFile.png" />
+    <Resource Include="Resources\Images\database.png" />
+    <Resource Include="Resources\Images\database_updated.png" />
+    <Resource Include="Resources\Images\database_white.png" />
+    <Resource Include="Resources\Images\keyboard.png" />
+    <Resource Include="Resources\Images\keyboard_active.png" />
+    <Resource Include="Resources\Images\keyboard_white.png" />
+    <Resource Include="Resources\Images\mouse.png" />
+    <Resource Include="Resources\Images\mouse_active.png" />
+    <Resource Include="Resources\Images\mouse_white.png" />
+    <Resource Include="Resources\Images\pdfFile.png" />
+    <Resource Include="Resources\Images\refresh.png" />
+    <Resource Include="Resources\Images\search.png" />
+    <Resource Include="Resources\Images\trashCan.png" />
+    <Resource Include="Resources\Images\trashCan2.png" />
+    <Resource Include="Resources\Images\trashCan_active.png" />
+    <Resource Include="Resources\Images\txtFile.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -105,10 +107,15 @@
 
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="ValueConverters\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="resources\images\logo.png">
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\Images\logo.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

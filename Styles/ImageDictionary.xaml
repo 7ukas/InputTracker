@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <BitmapImage x:Key="Console_White" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/console_white.png"/>
+    <BitmapImage x:Key="Keyboard_White" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/keyboard_white.png"/>
+    <BitmapImage x:Key="Mouse_White" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/mouse_white.png"/>
+    <BitmapImage x:Key="Database_White" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/database_white.png"/>
+
+    <BitmapImage x:Key="Calendar" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/calendar.png"/>
+    <BitmapImage x:Key="Clock" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/clock.png"/>
+    <BitmapImage x:Key="Application" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/application.png"/>
+    <BitmapImage x:Key="Mouse" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/mouse.png"/>
+    <BitmapImage x:Key="Keyboard" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/keyboard.png"/>
+    <BitmapImage x:Key="Database" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/database.png"/>
+    <BitmapImage x:Key="Arrow" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/arrow.png"/>
+    <BitmapImage x:Key="ArrowActive" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/arrow_active.png"/>
+    <BitmapImage x:Key="TrashCan" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/trashCan.png"/>
+    <BitmapImage x:Key="TrashCanActive" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/trashCan_active.png"/>
+    
+    <BitmapImage x:Key="Search" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/search.png"/>
+    <BitmapImage x:Key="Refresh" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/refresh.png"/>
+    <BitmapImage x:Key="CsvFile" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/csvFile.png"/>
+    <BitmapImage x:Key="TxtFile" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/txtFile.png"/>
+    <BitmapImage x:Key="Console" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/console.png"/>
+    <BitmapImage x:Key="TrashCan2" UriSource="pack://application:,,,/InputTracker;component/Resources/Images/trashCan2.png"/>
+    
+</ResourceDictionary>

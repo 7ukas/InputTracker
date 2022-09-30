@@ -13,8 +13,12 @@
         "packagesPath": "C:\\Users\\FasT\\.nuget\\packages\\",
         "outputPath": "D:\\Sandbox\\Code\\InputTracker\\InputTracker\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\FasT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,29 +48,35 @@
               "target": "Package",
               "version": "[2.0.123, )"
             },
-            "Dragablz": {
+            "Fody": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[0.0.3.223, )"
-            },
-            "MaterialDesignColors": {
-              "target": "Package",
-              "version": "[2.0.5, )"
+              "version": "[6.6.3, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.6, )"
+              "version": "[6.0.9, )"
+            },
+            "Microsoft.Xaml.Behaviors.Wpf": {
+              "target": "Package",
+              "version": "[1.1.39, )"
             },
             "ModernUI.WPF": {
               "target": "Package",
               "version": "[1.0.9, )"
             },
+            "PropertyChanged.Fody": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[6.0.1, )"
             },
             "System.Data.SQLite.Core": {
               "target": "Package",
-              "version": "[1.0.115.5, )"
+              "version": "[1.0.116, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",

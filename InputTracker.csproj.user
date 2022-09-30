@@ -4,13 +4,18 @@
     <ShowAllFiles>false</ShowAllFiles>
     <_LastSelectedProfileId>C:\Users\FasT\source\repos\InputTrackerWPF\InputTrackerWPF\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
+  <ItemGroup />
   <ItemGroup>
-    <ApplicationDefinition Update="App.xaml">
+    <Page Update="Styles\Controls.xaml">
       <SubType>Designer</SubType>
-    </ApplicationDefinition>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="ImageDictionary.xaml">
+    </Page>
+    <Page Update="Styles\ImageDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Layouts.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\StoryBoards.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="WindowHistory.xaml">
