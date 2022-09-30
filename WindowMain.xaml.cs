@@ -1,4 +1,6 @@
-﻿namespace InputTracker;
+﻿using System.Reflection;
+
+namespace InputTracker;
 
 public partial class WindowMain : Window {
     public static new string Title = "Input Tracker";
